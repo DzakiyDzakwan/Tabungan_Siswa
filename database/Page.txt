@@ -1,0 +1,27 @@
+Page yang diperlukan
+
+Role Admin
+1. Login/Register Admin
+
+2. Tampilan Table Siswa (Delete), Fitur(searching, pagination), Link nama siswa ke page history transaction
+
+3. Tampilan Table Admin (Delete), Fitur(searching, pagination)
+
+4.  Tampilan Table Berita(Edit, Delete, Create), Fitur (Searching, pagination)
+
+5. Tampilan Table Category(Create, Edit, Delete), Fitur(Searching, pagination)
+
+6. Tampilan history All Transaction
+7. Edit profil Admin
+
+Role User
+1. Login/Register user
+
+2. Main Page(All Berita), Searching Berita
+
+3. Profil User(Edit) beserta history transaction nya
+
+4. Form Confirmation Bank/Fintech
+
+Deadline
+14 Mei 2022

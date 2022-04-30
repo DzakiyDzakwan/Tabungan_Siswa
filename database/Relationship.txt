@@ -1,3 +1,0 @@
-Relationship
-1. Category memiliki Banyak Berita
-2. Setiap User dapat memberikan 1 notifikasi ke banyak admin
