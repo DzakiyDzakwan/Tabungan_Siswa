@@ -21,3 +21,6 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('test');
 });
+
+//Show Page
+Route::get('/transaction', [TransactionController::class, 'index']);

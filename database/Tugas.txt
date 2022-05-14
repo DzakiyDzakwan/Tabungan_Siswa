@@ -1,0 +1,72 @@
+Page yang diperlukan
+
+Role Admin
+1. Login/Register Admin
+
+2. Tampilan Table Siswa (Delete), Fitur(searching, pagination), Link nama siswa ke page history transaction
+
+3. Tampilan Table Admin (Delete), Fitur(searching, pagination)
+
+4.  Tampilan Table Berita(Edit, Delete, Create), Fitur (Searching, pagination)
+
+5. Tampilan Table Category(Create, Edit, Delete), Fitur(Searching, pagination)
+
+6. Tampilan history All Transaction
+7. Edit profil Admin
+
+Role User
+1. Login/Register user
+
+2. Main Page(All Berita), Searching Berita
+
+3. Profil User(Edit) beserta history transaction nya
+
+4. Form Confirmation Bank/Fintech
+
+Deadline
+14 Mei 2022
+
+Template admin fix : 
+
+Sidebar :
+1. admin
+    Manage(add admin)
+    Edit tidak ada
+2. Siswa
+  Manage tidak ada
+  Edit (NIS)
+3. Berita
+  Manage (Add berita)
+4. Kategory
+  Manage (Add Kategory)
+
+Edit Profil Admin
+
+Laravel
+
+Blade Template, Routing dan Controller
+
+Page yang tersedia :
+Admin :
+1. Edit Profil - Ikram
+2. Data Siswa - Erastus
+3. Data Admin - Fleming
+4. Data Berita - Fleming
+5. Data Category - Dzakiy
+
+User :
+1. Edit Profil - Febri
+2. Home - Febri
+3. Confirmation - Ikram
+4. Transaction -Dzakiy
+5. Detail Postingan - Febri
+
+Login - Erastus
+
+Register - Dzakiy
+
+4/5 orang Setuju.
+
+
+Deadline  : 24 Mei 2022 Full Feature
+Seminggu 2 kali meet mulai tanggal 16 Mei : Sabtu & Rabu, Pukul : 20.00 WIB paling lama 20.30 WIB. Kalau tidak bisa hadir silahkan hubungi GRUP Terdekat
