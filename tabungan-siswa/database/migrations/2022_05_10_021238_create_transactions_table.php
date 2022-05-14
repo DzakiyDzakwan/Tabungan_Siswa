@@ -21,7 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->bigInteger('admin')->unsigned();
             $table->char('siswa');
             $table->foreign('admin')->references('admin_id')->on('admins')->onDeleteRestrict()->onUpdateCascade();
-            $table->foreign('siswa')->references('NIS')->on('users')->onDeleteRestrict()->onUpdateCascade();
+            $table->foreign('siswa')->references('NIS')->on('siswas')->onDeleteRestrict()->onUpdateCascade();
             $table->timestamps();
         });
     }
