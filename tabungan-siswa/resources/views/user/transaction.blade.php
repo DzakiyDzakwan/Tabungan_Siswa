@@ -12,7 +12,7 @@
       <div class="col-md-12 grid-margin">
         <div class="row">
           <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-            <h3 class="font-weight-bold">Welcome User</h3>
+            <h3 class="font-weight-bold">Transaction</h3>
           </div>
         </div>
       </div>
@@ -28,7 +28,6 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>#</th>
                     <th>ID Transaction</th>
                     <th>Date</th>
                     <th>Balance</th>
@@ -36,26 +35,28 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($historySaldo as $history)
                   <tr>
-                    <td>1</td>
-                    <td>123</td>
-                    <td>1 Juni 2022</td>
-                    <td class="text-success"> 12000 </td>
-                    <td><label class="badge badge-success">Masuk</label></td>
+                    <td>{{$history['transaction_id']}}</td>
+                    <td>{{$history['transaction_date']}}</td>
+                    @if ($history['keterangan'] === 'in')
+                      <td class="text-success"> {{$history['saldo']}} </td>
+                      <td><label class="badge badge-success">saldo masuk</label></td>
+                    @else
+                    <td class="text-danger"> {{$history['saldo']}} </td>
+                    <td><label class="badge badge-danger">saldo keluar</label></td>
+                    @endif
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>124</td>
-                    <td>2 Juni 2022</td>
-                    <td class="text-danger"> 50000 </td>
-                    <td><label class="badge badge-danger">Keluar</label></td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
 
               <!-- Pagination-->
-              <nav aria-label="Pagination">
-                <hr class="mt-5" >
+              <nav aria-label="Pagination my-3">
+                {{$historySaldo->links()}}
+              </nav>
+
+              {{-- <hr class="mt-5" >
                 <ul class="pagination justify-content-center my-4">
                     <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
                     <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
@@ -65,7 +66,7 @@
                     <li class="page-item"><a class="page-link" href="#">15</a></li>
                     <li class="page-item"><a class="page-link" href="#">Older</a></li>
                 </ul>
-              </nav>
+               --}}
 
             </div>
           </div>
@@ -84,7 +85,7 @@
                 <div class="card card-tale">
                   <div class="card-body text-center">
                     <p class="mb-4">Balance Total</p>
-                    <p class="fs-30 mb-2">Rp 1250000</p>
+                    <p class="fs-30 mb-2">Rp {{$saldoTotal}}</p>
                   </div>
                 </div>
               </div>
@@ -92,7 +93,7 @@
                 <div class="card card-dark-blue">
                   <div class="card-body text-center">
                     <p class="mb-4">Balance Out</p>
-                    <p class="fs-30 mb-2">Rp 500000</p>
+                    <p class="fs-30 mb-2">Rp {{$saldoKeluar}}</p>
                   </div>
                 </div>
             </div>
