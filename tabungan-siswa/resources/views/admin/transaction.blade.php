@@ -32,7 +32,7 @@
                     <th>ID Transaction</th>
                     <th>Date</th>
                     <th>Balance</th>
-                    <th>keterangan</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,14 +41,34 @@
                     <td>123</td>
                     <td>1 Juni 2022</td>
                     <td class="text-success"> 12000 </td>
-                    <td><label class="badge badge-success">Masuk</label></td>
+                    <td><label class="badge badge-success">Completed</label></td>
                   </tr>
                   <tr>
                     <td>2</td>
                     <td>124</td>
                     <td>2 Juni 2022</td>
-                    <td class="text-danger"> 50000 </td>
-                    <td><label class="badge badge-danger">Keluar</label></td>
+                    <td class="text-success"> 50000 </td>
+                    <td><label class="badge badge-success">Completed</label></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>125</td>
+                    <td>3 Juni 2022</td>
+                    <td class="text-warning"> 6000 </td>
+                    <td><label class="badge badge-warning">In Progress</label></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>126</td>
+                    <td>4 Juni 2022</td>
+                    <td class="text-warning"> 90000 </td>
+                    <td><label class="badge badge-warning">In Progress</label></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>127</td>
+                    <td>5 Juni 2022</td>
+                    <td><label class="badge badge-warning">In Progress</label></td>
                   </tr>
                 </tbody>
               </table>

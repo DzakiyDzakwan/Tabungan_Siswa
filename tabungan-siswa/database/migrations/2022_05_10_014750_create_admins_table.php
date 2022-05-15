@@ -15,8 +15,10 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id('admin_id');
-            $table->string('pekerjaan');
+            $table->string('pekerjaan')->nullable(true);
             $table->enum('status', ['active', 'inactive']);
+            $table->bigInteger('user')->unsigned();
+            $table->foreign('user')->references('user_id')->on('users')->cascadeOnUpdate()->deleteOnUpdate();
             $table->timestamps();
         });
     }

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +24,31 @@ Route::get('/', function () {
     return view('test');
 });
 
-//Show Page
+Route::get('/admin', function() {
+    return view('layout.admin');
+});
+
+//Admin
+//Create
+
+
+//Read
+Route::get('/kategori', [CategoryController::class, 'index']);
+
+//Update
+
+
+//Delete
+
+
+//User
+//Create
+
+
+//Read
 Route::get('/transaction', [TransactionController::class, 'index']);
+
+//Update
+
+
+//Delete
