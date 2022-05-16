@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\SettingUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +20,6 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-
-Route::get('/', function () {
-    return view('test');
 });
 
 Route::get('/admin', function() {
@@ -48,7 +46,14 @@ Route::get('/kategori', [CategoryController::class, 'index']);
 //Read
 Route::get('/transaction', [TransactionController::class, 'index']);
 
+
+Route::get('/home', [HomeController::class, 'index']);
+
+Route::get('/post', [PostController::class, 'index']);
+
+
 //Update
 
+Route::get('/settingUser', [SettingUserController::class, 'index']);
 
 //Delete
