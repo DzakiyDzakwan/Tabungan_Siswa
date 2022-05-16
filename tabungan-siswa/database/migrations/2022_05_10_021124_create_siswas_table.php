@@ -17,7 +17,7 @@ class CreateSiswasTable extends Migration
             $table->char('NIS')->primary();
             $table->char('kelas');
             $table->bigInteger('user')->unsigned();
-            $table->foreign('user')->references('user_id')->on('users')->cascadeOnUpdate()->deleteOnUpdate();
+            $table->foreign('user')->references('id')->on('users')->cascadeOnUpdate()->deleteOnUpdate();
             $table->timestamps();
         });
     }

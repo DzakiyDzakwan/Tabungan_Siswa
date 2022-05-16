@@ -1,0 +1,26 @@
+User::create([
+            'user_name'=> 'siswa2',
+            'password'=> bcrypt('siswa2'),
+            'nama'=> 'siswa2',
+            'role'=>'siswa'
+            
+        ]);
+
+Admin::create([
+            'pekerjaan'=> 'Wali Kelas',
+            'status'=> 'active',
+            'user'=> 2,
+            
+        ]);
+
+Transaction
+Transaction::create([
+            'saldo'=> '20000',
+            'keterangan'=> 'in',
+            'transaction_date'=> '2022-04-19',
+            'admin'=> 1,
+            'siswa'=> '191021001',
+            
+        ]);
+
+Transaction::where('siswa', '191021001')->skip(0)->take(5)->orderBy('transaction_date', 'asc')->get();

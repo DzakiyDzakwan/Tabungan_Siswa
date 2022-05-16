@@ -18,7 +18,7 @@ class CreateAdminsTable extends Migration
             $table->string('pekerjaan')->nullable(true);
             $table->enum('status', ['active', 'inactive']);
             $table->bigInteger('user')->unsigned();
-            $table->foreign('user')->references('user_id')->on('users')->cascadeOnUpdate()->deleteOnUpdate();
+            $table->foreign('user')->references('id')->on('users')->cascadeOnUpdate()->deleteOnUpdate();
             $table->timestamps();
         });
     }
