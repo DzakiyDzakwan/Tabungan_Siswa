@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  @yield('header-tambahan')
 </head>
 <body>
   <div class="container-scroller">

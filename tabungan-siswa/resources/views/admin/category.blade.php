@@ -1,4 +1,191 @@
 @extends('layout.admin')
+@section('header-tambahan')
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+body {
+    color: #566787;
+    background: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+}
+.table-responsive {
+    margin: 30px 0;
+}
+.table-wrapper {
+    min-width: 1000px;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-title {
+    padding-bottom: 10px;
+    margin: 0 0 10px;
+    min-width: 100%;
+}
+.table-title h2 {
+    margin: 8px 0 0;
+    font-size: 22px;
+}
+.search-box {
+    position: relative;        
+    float: right;
+}
+.search-box input {
+    height: 34px;
+    border-radius: 20px;
+    padding-left: 35px;
+    border-color: #ddd;
+    box-shadow: none;
+}
+.search-box input:focus {
+    border-color: #3FBAE4;
+}
+.search-box i {
+    color: #a0a5b1;
+    position: absolute;
+    font-size: 19px;
+    top: 8px;
+    left: 10px;
+}
+table.table tr th, table.table tr td {
+    border-color: #e9e9e9;
+}
+table.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fcfcfc;
+}
+table.table-striped.table-hover tbody tr:hover {
+    background: #f5f5f5;
+}
+table.table th i {
+    font-size: 13px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+table.table td:last-child {
+    width: 130px;
+}
+table.table td a {
+    color: #a0a5b1;
+    display: inline-block;
+    margin: 0 5px;
+}
+table.table td a.view {
+    color: #03A9F4;
+}
+table.table td a.edit {
+    color: #FFC107;
+}
+table.table td a.delete {
+    color: #E34724;
+}
+table.table td i {
+    font-size: 19px;
+}    
+.pagination {
+    float: right;
+    margin: 0 0 5px;
+}
+.pagination li a {
+    border: none;
+    font-size: 95%;
+    width: 30px;
+    height: 30px;
+    color: #999;
+    margin: 0 2px;
+    line-height: 30px;
+    border-radius: 30px !important;
+    text-align: center;
+    padding: 0;
+}
+.pagination li a:hover {
+    color: #666;
+}	
+.pagination li.active a {
+    background: #03A9F4;
+}
+.pagination li.active a:hover {        
+    background: #0397d6;
+}
+.pagination li.disabled i {
+    color: #ccc;
+}
+.pagination li i {
+    font-size: 16px;
+    padding-top: 6px
+}
+.hint-text {
+    float: left;
+    margin-top: 6px;
+    font-size: 95%;
+}    
+</style>
+<script>
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+@endsection
 @section('content')
-<h1>Hello, World! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facilis, asperiores numquam aspernatur culpa est laudantium quis repellendus illo iusto aut rerum a quae ab accusamus perferendis veritatis eos at? Velit excepturi ut rem minus recusandae, eveniet sequi voluptate molestiae ipsa tenetur magnam esse explicabo vero ratione cumque illo doloremque porro asperiores quasi mollitia delectus amet aspernatur quia? Error qui, delectus blanditiis deleniti commodi odio repellat? Blanditiis consectetur in aliquid aperiam cumque nemo eveniet error, qui inventore praesentium ipsa fugit nesciunt impedit numquam ipsum magni hic sint non, repellat eius! Hic repellat minima asperiores a amet ipsa rem possimus illum alias dicta quisquam magnam in, voluptatem ullam ut quidem cum aliquam facilis nam voluptatum reiciendis, velit laborum aperiam. Corporis ratione fuga cupiditate explicabo amet inventore animi aperiam, repellat accusantium. Dicta iusto architecto, temporibus quaerat quidem nobis iste aperiam tempore ut at enim nostrum! Quod corrupti autem obcaecati quis voluptate esse voluptatum, et recusandae, repudiandae, porro fugiat ducimus perspiciatis voluptatem ab quasi? Ducimus sed maxime minus ex excepturi fuga error harum adipisci praesentium consequatur, est sint in autem voluptatum assumenda? Labore ad cupiditate, aspernatur aliquam sunt officiis amet ea architecto illo, tempore atque quos quae fuga dolorem suscipit optio earum! Quae nemo adipisci iusto mollitia deleniti ad ullam incidunt, vitae, exercitationem quia laboriosam eius inventore voluptatum illo dolore eligendi ducimus! Laborum sapiente nobis rem molestias distinctio nam reiciendis, deleniti officia odio accusantium, magnam voluptatibus dolorum nostrum iure eveniet fugit quod voluptates quidem praesentium, tenetur possimus suscipit quam? Similique officiis optio ipsa est qui esse deleniti corrupti possimus laboriosam pariatur alias quis minus, nostrum quisquam numquam saepe dolorum quas placeat ex nobis. Aspernatur laboriosam dicta ipsam, harum nobis odio nulla provident soluta dignissimos! Delectus illo deleniti fugiat qui vel dolores dolorem distinctio, iste doloremque laudantium assumenda eveniet nobis, quas perferendis perspiciatis, labore dolor necessitatibus harum reprehenderit iusto eaque blanditiis tempore? Aperiam, aliquid, quae repellendus at, eaque optio voluptatem illum reprehenderit deleniti aut et enim! Magni ullam, esse qui culpa quae quasi sed placeat, necessitatibus autem reprehenderit sit et doloremque at deserunt optio laboriosam exercitationem dolorem, repudiandae commodi ab eligendi minima ipsum recusandae consectetur? Iste animi, fuga facere, reiciendis dicta minus placeat laboriosam officia facilis quos vero suscipit laudantium culpa a dolore accusamus sit. Sapiente, officia doloremque ducimus id ex corrupti? Laudantium, excepturi quam aliquid natus fuga saepe quas, illum minima harum dolorum, molestiae earum ipsum soluta adipisci similique fugit aliquam possimus atque maiores debitis? Nemo odio, numquam cumque perferendis, optio autem reiciendis dicta necessitatibus itaque velit blanditiis incidunt? Beatae magni odit architecto repellendus a vitae explicabo alias sint dignissimos eum modi dolor perspiciatis nostrum ad mollitia, quod, deleniti quisquam quos laborum veritatis omnis doloremque minima unde! Natus sint at quidem amet, tenetur magnam vero alias esse excepturi dolores provident animi magni doloribus quis rem recusandae minus asperiores fugit, blanditiis delectus qui. Nemo, tempora odio? Blanditiis labore unde totam dignissimos officia qui quaerat eum perferendis nulla reprehenderit esse mollitia, itaque veritatis dolores, quis sequi reiciendis quod quidem aperiam. Alias deserunt veritatis accusamus eveniet ipsum. Accusantium numquam, minus velit tempora pariatur quasi voluptatum aperiam! Dolor voluptatem, placeat suscipit expedita deserunt praesentium natus vel inventore sunt, aliquam rem. Quibusdam mollitia a ullam vel reiciendis illo officia unde praesentium odit dolor, excepturi sapiente cupiditate iste vitae assumenda ex! Dolorum natus error repellendus a! Totam, eius libero ex autem nisi perferendis possimus! Suscipit ut aperiam labore, et deleniti debitis ea odio corporis corrupti pariatur possimus. Veritatis sed, incidunt, enim placeat impedit iste quam maxime blanditiis itaque molestiae rem ducimus saepe illum architecto, et est hic voluptate vel! Ipsum voluptatem iste maiores temporibus quis. Accusantium saepe dolores quo? Soluta minima neque sed, veritatis porro fuga dolorum corrupti repellat distinctio sequi commodi maiores magni cum labore dolore temporibus accusantium harum. Deleniti cum odit doloribus aliquam, similique totam numquam sunt facere. Repellat ducimus rem corrupti reiciendis? Recusandae neque vitae dolore officia, tempore dolorem porro enim, itaque quis eos soluta aspernatur laboriosam, tempora deleniti veritatis aperiam? Magni eius officiis culpa, ea maxime nesciunt excepturi saepe corporis quo vitae consequatur nobis? Nesciunt, nihil vitae laborum tempora consectetur numquam harum sit? Necessitatibus, qui? Dicta, omnis tempore inventore porro similique architecto sint praesentium veniam numquam? Asperiores, eaque ratione provident repellat necessitatibus voluptate perspiciatis, nihil dolor adipisci ducimus non? At ab veritatis quo explicabo sunt porro nam aperiam quisquam quasi, necessitatibus iure itaque impedit accusantium est facere, eum officiis eaque possimus? Eius placeat natus assumenda quae. Eius omnis rem, minima ipsum totam deserunt possimus in iusto mollitia neque repudiandae modi reprehenderit odio inventore sit eveniet debitis illum nulla harum quos ex. Facere similique quam totam, autem esse iure veniam. Cum, nesciunt quam? Voluptatibus voluptatem, eaque voluptate est blanditiis consectetur laudantium optio ducimus unde impedit eveniet officiis ad similique fugit. Consequuntur illum ex ipsum quae maxime natus accusamus similique illo et cum fugiat, nemo iure, fuga optio inventore dolore assumenda nisi dignissimos at enim, ab omnis nobis vero veniam? Dolor, tenetur odio? Molestiae qui assumenda perspiciatis explicabo dolores. Corporis, dicta fugit perferendis corrupti blanditiis quaerat dolor? Earum, incidunt. Fuga quod sint ratione quasi assumenda ea. Nulla, laborum. Minima, ipsam veritatis! Incidunt quos magnam dolorem quaerat inventore corrupti, vel architecto aperiam mollitia in minima libero odio esse eveniet modi, deleniti dolore officiis, doloribus quae ratione voluptatibus ullam autem nulla veritatis! Quod aperiam atque nemo ea doloremque perferendis fugiat inventore ab numquam. Magni accusamus vitae molestias aliquid atque dicta? Animi dolorum incidunt fugit iure voluptate nihil vitae provident commodi ab, eius possimus quos dolore voluptatem necessitatibus consequuntur laboriosam. Sequi, cum repellat reiciendis id delectus maxime quis doloribus, ipsam quisquam recusandae rem tempora corporis impedit provident minima ad esse officiis, quos soluta quasi possimus dignissimos natus culpa. Quaerat eaque rerum saepe accusantium quos et voluptas rem numquam ratione ea odio exercitationem dolore, earum nisi adipisci? Velit, soluta quo. Pariatur sint, exercitationem deleniti voluptatem perspiciatis similique ex iste, hic, aut nemo officia repellendus obcaecati velit non temporibus eius tenetur? Velit fugit obcaecati, asperiores repellendus temporibus earum aspernatur officiis quia unde itaque saepe atque id impedit laudantium perspiciatis consequuntur at! Eligendi, ipsam?</h1>
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
+                    <div class="col-sm-4">
+                        <div class="search-box">
+                            <i class="material-icons">&#xE8B6;</i>
+                            <input type="text" class="form-control" placeholder="Search&hellip;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NIS<i class="fa fa-sort"></i></th>
+                        <th>NAMA</th>
+                        <th>KELAS <i class="fa fa-sort"></i></th>
+                        <th>SALDO</th>
+                        <th>Country <i class="fa fa-sort"></i></th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Thomas Hardy</td>
+                        <td>89 Chiaroscuro Rd.</td>
+                        <td>Portland</td>
+                        <td>97219</td>
+                        <td>USA</td>
+                        <td>
+                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>      
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>  
+</div>   
 @endsection

@@ -13,7 +13,8 @@
 
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item nav-profile dropdown d-flex align-items-center">
-        <h4 class="my-0 mx-2"><strong> {{auth()->user()->nama}} </strong></h4>
+        {{-- <h4 class="my-0 mx-2"><strong> {{auth()->user()->$nama}} </strong></h4> --}}
+        <h4 class="my-0 mx-2"><strong> Mantav </strong></h4>
         <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown" id="profileDropdown">
           <img src="images/profile.png" alt="profile"/>
         </a>
