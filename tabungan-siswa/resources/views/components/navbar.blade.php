@@ -12,8 +12,9 @@
     
 
     <ul class="navbar-nav navbar-nav-right">
-      <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+      <li class="nav-item nav-profile dropdown d-flex align-items-center">
+        <h4 class="my-0 mx-2"><strong> {{auth()->user()->nama}} </strong></h4>
+        <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown" id="profileDropdown">
           <img src="images/profile.png" alt="profile"/>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
@@ -22,8 +23,11 @@
             Settings
           </a>
           <a class="dropdown-item">
-            <i class="mdi mdi-logout menu-icon"></i>
-            Logout
+            <form action="/logout" method="POST">
+              @csrf
+              <i class="mdi mdi-logout menu-icon"></i>
+              <button class="btn p-0" type="submit">Logout</button>
+            </form>
           </a>
         </div>
       </li>
