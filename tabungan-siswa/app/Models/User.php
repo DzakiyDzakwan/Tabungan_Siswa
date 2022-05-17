@@ -50,5 +50,10 @@ class User extends Authenticatable
         return $this->hasOne(Admin::class);
     }
 
+    public static function lihat() {
+        $keren = User::where('nama', 'Budiman')->get();
+        echo $keren;
+    }
+
 
 }
