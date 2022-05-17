@@ -18,12 +18,14 @@ use App\Http\Controllers\SettingUserController;
 |
 */
 
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('testlogin');
 });
 
-Route::get('/admin', function() {
-    return view('layout.admin');
+Route::get('/register', function() {
+    return view('testregister');
 });
 
 //Admin
