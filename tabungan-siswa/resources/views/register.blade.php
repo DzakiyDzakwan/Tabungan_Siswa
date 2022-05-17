@@ -20,6 +20,14 @@
             <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow rounded">
 
               {{--  Alerts --}}
+              
+              @error('email')
+              <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                <strong>{{$message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @enderror
+
               @error('nama')
               <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
                 <strong>{{$message}}</strong>
@@ -54,7 +62,12 @@
               <h4 class="text-center fw-black"><strong>Mau Nabung Online ?</strong></h4>
               <h6 class="font-weight-light text-center">Daftar Dulu Dong</h6>
               <form class="pt-3" action="/regist" method="POST">
+                
                 @csrf
+
+                <div class="form-group">
+                  <input name="email" type="email" class="form-control form-control-lg" id="email" placeholder="Email" required>
+                </div>
                 <div class="form-group">
                   <input name="nama" type="text-disabled" class="form-control form-control-lg" id="nama" placeholder="Full Name" required>
                 </div>

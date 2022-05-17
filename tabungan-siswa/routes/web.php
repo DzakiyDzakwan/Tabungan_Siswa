@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProfilController;
 
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CategoryController;
@@ -27,57 +28,81 @@ use App\Http\Controllers\SettingUserController;
 Route::middleware('guest')->group(function(){
 
     //Login & Register
-    Route::get('/', [LoginController::class, 'index']);
+    Route::get('/', [LoginController::class, 'index'])->name('login');
 
     Route::post('/login', [LoginController::class, 'login']);
 
-    Route::get('/register', [RegisterController::class, 'index']);
+    Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
     Route::post('/regist', [RegisterController::class, 'regist']);
 
 });
 
- Route::post('/logout', [LoginController::class, 'logout']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->group(function() {
 
-    Route::middleware('siswa')->group(function() {
+
+    Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
+
+    Route::post('/daftar', [ProfilController::class, 'daftar']);
+
+    
+    Route::middleware('checkprofil')->group(function(){
+    
+        Route::middleware('siswa')->group(function() {
+
+
+            //User
+            //Create
+
+
+            //Read
+            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/home', [HomeController::class, 'index']);
+            Route::get('/post', [PostController::class, 'index']);
+            Route::get('/settingUser', [SettingUserController::class, 'index']);
+
+
+            //Update
+
+
+            //Delete
+
+        });
+    
+        Route::middleware('admin')->group(function(){
+            //Admin
+            //Create
+
+
+            //Read
+            Route::get('/kategori', [CategoryController::class, 'index']);
+
+
+            //Update
+
+
+            //Delete
+
+        });
 
     });
 
-    Route::middleware('admin')->group(function(){
-
-    });
+    
 
 });
 
-//Admin
-//Create
-
-
-//Read
-Route::get('/kategori', [CategoryController::class, 'index']);
-
-//Update
-
-
-//Delete
 
 
 /* -------------------------------------------------------------------------------------- */
 
-//User
-//Create
 
 
-//Read
-Route::get('/transaction', [TransactionController::class, 'index']);
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/post', [PostController::class, 'index']);
-Route::get('/settingUser', [SettingUserController::class, 'index']);
 
 
-//Update
 
 
-//Delete
+
+
+

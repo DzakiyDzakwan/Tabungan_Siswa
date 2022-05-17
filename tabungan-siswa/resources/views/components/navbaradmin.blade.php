@@ -69,8 +69,11 @@
             Settings
           </a>
           <a class="dropdown-item">
-            <i class="mdi mdi-logout menu-icon"></i>
-            Logout
+            <form action="/logout" method="POST">
+              @csrf
+              <i class="mdi mdi-logout menu-icon"></i>
+              <button class="btn p-0" type="submit">Logout</button>
+            </form>
           </a>
         </div>
       </li>

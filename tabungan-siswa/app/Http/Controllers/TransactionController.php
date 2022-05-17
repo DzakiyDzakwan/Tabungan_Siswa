@@ -10,11 +10,13 @@ class TransactionController extends Controller
     
     public function index() {
 
-        $historySaldo = Transaction::where('siswa', '191021001')->skip(0)->take(5)->orderBy('transaction_date', 'asc')->paginate(5);
+        $id = auth()->user()->id;
 
-        $saldoKeluar = Transaction::where('keterangan', 'out')->sum('saldo');
+        $historySaldo = Transaction::where('siswa', $id)->skip(0)->take(5)->orderBy('transaction_date', 'asc')->paginate(5);
 
-        $saldoMasuk = Transaction::where('keterangan', 'in')->sum('saldo');
+        $saldoKeluar = Transaction::where('keterangan', 'out')->where('siswa', $id)->sum('saldo');
+
+        $saldoMasuk = Transaction::where('keterangan', 'in')->where('siswa', $id)->sum('saldo');
 
         $totalSaldo = $saldoMasuk - $saldoKeluar;
 
