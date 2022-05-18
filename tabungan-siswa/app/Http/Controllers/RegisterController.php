@@ -32,7 +32,7 @@ class RegisterController extends Controller
             'email'=>$request->email,
             'user_name'=>$request->user_name,
             'nama'=>$request->nama,
-            'role'=> 'siswa',
+            'role'=> $request->role,
             'password' => $validatedData['password']
         ]);
 
