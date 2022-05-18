@@ -11,6 +11,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingUserController;
+use App\Http\Controllers\SiswaController;
+use App\Models\Siswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +37,10 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
     Route::post('/regist', [RegisterController::class, 'regist']);
+    Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::get('/hapus/{NIS}', [SiswaController::class, 'hapus']);
+
+
 
 });
 

@@ -156,26 +156,23 @@ $(document).ready(function(){
                         <th>NAMA</th>
                         <th>KELAS <i class="fa fa-sort"></i></th>
                         <th>SALDO</th>
-                        <th>Country <i class="fa fa-sort"></i></th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    {{ $datanya }}
-                  {{-- @foreach ($datanya->user as $data)
+                  @foreach ($datanya as $data)
                     <tr>
-                        <td>{{ $data->id}}</td>
-                        <td>Thomas Hardy</td>
-                        <td>89 Chiaroscuro Rd.</td>
-                        <td>Portland</td>
-                        <td>97219</td>
-                        <td>USA</td>
+                        <td>{{ $data->id }}</td>
+                        <td>{{ $data->NIS }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->kelas }}</td>
+                        <td>{{ $data->saldo }}</td>
                         <td>
                             <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
                             <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td> --}}
+                            <a href="/hapus/{{ $data->NIS }}" onclick="confirm('Anda yakin??')" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        </td>
                     </tr>     
                     @endforeach 
                 </tbody>

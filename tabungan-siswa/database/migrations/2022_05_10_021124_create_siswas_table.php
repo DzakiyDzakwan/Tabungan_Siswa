@@ -16,6 +16,7 @@ class CreateSiswasTable extends Migration
         Schema::create('siswas', function (Blueprint $table) {
             $table->char('NIS')->primary();
             $table->char('kelas');
+            $table->bigInteger('saldo');
             $table->bigInteger('user')->unsigned();
             $table->foreign('user')->references('id')->on('users')->cascadeOnUpdate()->deleteOnUpdate();
             $table->timestamps();
