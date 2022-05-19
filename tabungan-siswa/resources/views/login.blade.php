@@ -55,7 +55,7 @@
               <form class="pt-3" action="/login" method="POST">
                 @csrf
                 <div class="form-group">
-                  <input type="text" name="user_name" class="form-control form-control-lg" id="username" placeholder="Username" required>
+                  <input type="text" name="user_name" class="form-control form-control-lg" id="user_name" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                   <input name="password" type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
