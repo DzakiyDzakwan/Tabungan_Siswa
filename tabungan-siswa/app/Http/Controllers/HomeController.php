@@ -4,10 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function index() {
-        return view('user.home');
+    public function show() {
+        $posts = DB::table('beritas')->orderBy('berita_id')->paginate(6);
+            return view('user.home', ['posts' => $posts]);
     }
+
+    public function cari(Request $request) {
+        $cari = $request->cari;
+        $beritas = DB::table('beritas')->where('judul', 'LIKE', "%".$cari."%")->paginate();
+            return view('user.home', ['beritas' => $beritas]);
+    }
+
+
 }

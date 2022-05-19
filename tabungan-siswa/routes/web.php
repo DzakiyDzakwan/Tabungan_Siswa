@@ -65,8 +65,9 @@ Route::middleware('auth')->group(function() {
 
             //Read
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
-            Route::get('/home', [HomeController::class, 'index']);
-            Route::get('/post', [PostController::class, 'index']);
+            Route::get('/home', [HomeController::class, 'show']);
+            Route::get('/home/cari', [HomeController::class, 'cari']);
+            Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
             Route::get('/settingUser', [SettingUserController::class, 'index']);
 
 
