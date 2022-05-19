@@ -26,7 +26,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/transaksi">
+      <a class="nav-link" href="/transaction">
         <i class="mdi mdi-playlist-check menu-icon"></i>
         <span class="menu-title">Transaction</span>
       </a>

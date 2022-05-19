@@ -9,6 +9,26 @@
       <i class="mdi mdi-menu menu-icon"></i>
     </button>
     <ul class="navbar-nav navbar-nav-right">
+      {{-- Setting --}}
+      <li class="nav-item nav-profile dropdown">
+        <h5 class="my-0 mx-2"><strong> {{auth()->user()->nama}} </strong></h5>
+        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+          <img src="images/profile.png" alt="profile"/>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+          <a href="/setting" class="dropdown-item">
+            <i class="mdi mdi-account menu-icon"></i>
+            Settings
+          </a>
+          <a class="dropdown-item">
+            <form action="/logout" method="POST">
+              @csrf
+              <i class="mdi mdi-logout menu-icon"></i>
+              <button class="btn p-0" type="submit">Logout</button>
+            </form>
+          </a>
+        </div>
+      </li>
       {{-- Notification --}}
       <li class="nav-item dropdown">
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
@@ -55,25 +75,6 @@
                 2 days ago
               </p>
             </div>
-          </a>
-        </div>
-      </li>
-      {{-- Setting --}}
-      <li class="nav-item nav-profile dropdown">
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-          <img src="images/profile.png" alt="profile"/>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-          <a href="/setting" class="dropdown-item">
-            <i class="mdi mdi-account menu-icon"></i>
-            Settings
-          </a>
-          <a class="dropdown-item">
-            <form action="/logout" method="POST">
-              @csrf
-              <i class="mdi mdi-logout menu-icon"></i>
-              <button class="btn p-0" type="submit">Logout</button>
-            </form>
           </a>
         </div>
       </li>

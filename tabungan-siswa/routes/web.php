@@ -44,10 +44,11 @@ Route::middleware('guest')->group(function(){
 
 });
 
-Route::post('/logout', [LoginController::class, 'logout']);
+
 
 Route::middleware('auth')->group(function() {
 
+    Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
 
@@ -55,6 +56,7 @@ Route::middleware('auth')->group(function() {
 
     
     Route::middleware('checkprofil')->group(function(){
+
     
         Route::middleware('siswa')->group(function() {
 
@@ -81,9 +83,10 @@ Route::middleware('auth')->group(function() {
         Route::middleware('admin')->group(function(){
             //Admin
             //Create
-
+            Route::post('/transaction/create', [TransactionController::class, 'store']);
 
             //Read
+            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
             Route::get('/kategori', [CategoryController::class, 'index']);
 
 
