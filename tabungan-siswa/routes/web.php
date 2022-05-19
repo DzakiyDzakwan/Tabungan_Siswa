@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function() {
 
 
             //Read
-            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/transaction', [TransactionController::class, 'siswa'])->name('transaction');
             Route::get('/home', [HomeController::class, 'show']);
             Route::get('/home/cari', [HomeController::class, 'cari']);
             Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
@@ -86,7 +86,7 @@ Route::middleware('auth')->group(function() {
             Route::post('/transaction/create', [TransactionController::class, 'store']);
 
             //Read
-            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('admintransaction');
             Route::get('/kategori', [CategoryController::class, 'index']);
 
 

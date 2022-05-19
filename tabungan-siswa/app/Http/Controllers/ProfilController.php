@@ -40,11 +40,13 @@ class ProfilController extends Controller
         if(auth()->user()->role === 'siswa') {
 
             $credential = $request->validate([
-                'NIS' => 'required|unique:siswas'
+                'NIS' => 'required|unique:siswas',
+                'nama' => 'required|max:225',
             ]);
 
             Siswa::Create([
                 'NIS'=>$request->NIS,
+                'nama'=>$request->nama,
                 'kelas'=>$request->kelas,
                 'user' => $id
             ]);
@@ -54,16 +56,18 @@ class ProfilController extends Controller
         } else {
 
             $credential = $request->validate([
-                'pekerjaan' => 'required'
+                'pekerjaan' => 'required',
+                'nama' => 'required|max:225'
             ]);
 
             Admin::Create([
                 'pekerjaan'=>$request->pekerjaan,
+                'nama'=>$request->nama,
                 'status'=>'active',
                 'user' => $id
             ]);
 
-            return redirect('/admin');
+            return redirect('/transaction');
 
         }
 

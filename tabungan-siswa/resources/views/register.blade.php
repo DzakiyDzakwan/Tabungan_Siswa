@@ -28,12 +28,7 @@
               </div>
               @enderror
 
-              @error('nama')
-              <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-                <strong>{{$message}}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-              @enderror
+             
 
               @error('user_name')
               <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
@@ -67,9 +62,6 @@
 
                 <div class="form-group">
                   <input name="email" type="email" class="form-control form-control-lg" id="email" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                  <input name="nama" type="text-disabled" class="form-control form-control-lg" id="nama" placeholder="Full Name" required>
                 </div>
                 <div class="form-group">
                   <input name="user_name" type="text" class="form-control form-control-lg" id="user_name" placeholder="Username" required>

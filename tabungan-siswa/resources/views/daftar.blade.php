@@ -24,6 +24,13 @@
             <div class="auth-form-light text-left py-5 px-4 px-sm-5 shadow rounded">
 
               {{--  Alerts --}}
+
+              @error('nama')
+              <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                <strong>{{$message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @enderror
               
               @error('NIS')
               <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
@@ -44,6 +51,10 @@
 
                 <div class="form-group">
                   <input name="NIS" type="text-disabled" class="form-control form-control-lg" id="NIS" placeholder="NIS" required>
+                </div>
+
+                <div class="form-group">
+                  <input name="nama" type="text-disabled" class="form-control form-control-lg" id="nama" placeholder="Full Name" required>
                 </div>
                 
                 <div class="form-group">
@@ -74,6 +85,13 @@
 
               {{--  Alerts --}}
 
+              @error('nama')
+              <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                <strong>{{$message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              @enderror
+
               @error('pekerjaan')
               <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
                 <strong>{{$message}}</strong>
@@ -92,6 +110,11 @@
                 @csrf
 
                 <div class="form-group">
+
+                  <div class="form-group">
+                    <input name="nama" type="text-disabled" class="form-control form-control-lg" id="nama" placeholder="Full Name" required>
+                  </div>
+
                   <input name="pekerjaan" type="text-disabled" class="form-control form-control-lg" id="pekerjaan" placeholder="Pekerjaan" required>
                 </div>
                 <div class="mt-3">

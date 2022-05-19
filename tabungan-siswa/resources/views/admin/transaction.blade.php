@@ -211,10 +211,10 @@
 
   {{-- BALANCE SECTION --}}
   <div class="container-fluid  mx-auto p-3" >
-    <div class="card shadow">
+    <div class="card card-dark-blue shadow">
       <div class="card-body">
-        <h5 class="card-title text-center">Balance</h5>
-        <h4 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h4>
+        <h3 class="card-title text-center text-white fs-3">Balance</h3>
+        <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
         <button class="btn btn-success mx-auto my-3 d-block" data-toggle="modal" data-target="#transaction">Lakukan Transaksi</button>
       </div>
     </div>
@@ -245,7 +245,7 @@
                           <th>SALDO</th>
                           <th>ADMIN</th>
                           <th>KETERANGAN</th>
-                          <th>Actions</th>
+                          {{-- <th>Actions</th> --}}
                       </tr>
                   </thead>
                   <tbody>
@@ -253,31 +253,38 @@
                       <tr>
                         <td>1</td>
                         <td>{{$history['transaction_date']}}</td>
-                        <td>{{$history['nama']}}</td>
-                        <td>Rp.1000.000</td>
-                        <td>Admin Satu</td>
-                        <td><span class="badge badge-success">masuk</span></td>
-                        <td>
+                        <td>{{$history['siswa']}}</td>
+                        <td>{{$history['saldo']}}</td>
+                        <td>{{$history['admin']}}</td>
+                        @if ($history['keterangan'] === "in" )
+                          <td><span class="badge badge-success">masuk</span></td>
+                        @else
+                          <td><span class="badge badge-danger">keluar</span></td>
+                        @endif
+                        
+                        {{-- <td>
                             <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editModal">&#xE254;</i></a>
                             <form action="/siswa/delete/id" method="post" class="d-inline">
                               <a onclick="event.preventDefault()"  href="" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </form>
-                        </td>
+                        </td> --}}
                       </tr>
                     @endforeach
                       
                   </tbody>
               </table>
               <div class="clearfix">
-                  <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                  <div class="hint-text">Showing <b>{{$historySaldo->firstItem()}}</b> out of <b>{{$historySaldo->lastItem()}}</b> entries</div>
                   <ul class="pagination">
-                      <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+
+                      {{ $historySaldo->links() }}
+                      {{-- <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
                       <li class="page-item active"><a href="#" class="page-link">1</a></li>
                       <li class="page-item"><a href="#" class="page-link">2</a></li>
                       <li class="page-item"><a href="#" class="page-link">3</a></li>
                       <li class="page-item"><a href="#" class="page-link">4</a></li>
                       <li class="page-item"><a href="#" class="page-link">5</a></li>
-                      <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+                      <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li> --}}
                   </ul>
               </div>
           </div>

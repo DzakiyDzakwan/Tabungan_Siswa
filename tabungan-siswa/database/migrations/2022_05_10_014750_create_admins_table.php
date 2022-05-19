@@ -15,6 +15,7 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->id('admin_id');
+            $table->string('nama');
             $table->string('pekerjaan')->nullable(true);
             $table->enum('status', ['active', 'inactive']);
             $table->bigInteger('user')->unsigned();

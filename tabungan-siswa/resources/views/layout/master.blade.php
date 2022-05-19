@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   @yield('title')
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+  @yield('style')
   
   <link rel="stylesheet" href="{{asset('mdi/css/materialdesignicons.min.css')}}">
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
@@ -30,7 +31,7 @@
   <script src="{{asset('js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('js/template.js')}}"></script>
   <script src="{{asset('js/bootstrap.js')}}"></script>
-  @yield('upload')
+  @yield('script')
   
 </body>
 
