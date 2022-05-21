@@ -62,9 +62,7 @@ Route::middleware('auth')->group(function() {
 
             //User
             //Create
-            Route::get('/siswa', [SiswaController::class, 'index']);
-            Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
-            Route::get('/siswa/{id}', [SiswaController::class, 'index1']);
+            
 
             //Read
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
@@ -87,12 +85,15 @@ Route::middleware('auth')->group(function() {
 
             //Read
             Route::get('/kategori', [CategoryController::class, 'index']);
+            Route::get('/siswa', [SiswaController::class, 'index']);
 
 
             //Update
+            Route::get('/siswa/{id}', [SiswaController::class, 'index1']);
 
 
             //Delete
+            Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
 
         });
 
