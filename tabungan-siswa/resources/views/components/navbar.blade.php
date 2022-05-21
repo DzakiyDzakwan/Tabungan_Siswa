@@ -1,3 +1,11 @@
+<?php 
+
+  use App\Models\Siswa;
+  use App\Models\Admin;
+  $id = auth()->user()->id;
+
+?>
+
 <!-- Navbar -->
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -9,12 +17,21 @@
       <i class="mdi mdi-menu menu-icon"></i>
     </button>
 
-    
-
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item nav-profile dropdown d-flex align-items-center">
         {{-- <h4 class="my-0 mx-2"><strong> {{auth()->user()->$nama}} </strong></h4> --}}
-        <h4 class="my-0 mx-2"><strong> {{auth()->user()->nama}} </strong></h4>
+
+        @if (auth()->user()->role === 'admin' )
+          <?php
+            $nama = Admin::select('nama')->where('user', $id)->get()[0]['nama'];
+          ?>
+          <h4 class="my-0 mx-2"><strong> {{$nama}} </strong></h4>
+        @else
+          <?php
+          $nama = Siswa::select('nama')->where('user', $id)->get()[0]['nama'];
+          ?>
+          <h4 class="my-0 mx-2"><strong> {{$nama}} </strong></h4>
+        @endif
         <a class="nav-link dropdown-toggle " href="#" data-toggle="dropdown" id="profileDropdown">
           <img src="{{ asset('images/profile.png') }}" alt="profile"/>
         </a>

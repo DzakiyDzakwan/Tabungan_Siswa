@@ -23,29 +23,59 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Setting</h4>
-                            <form class="forms-sample">
+                            <h4 class="card-title">Setting User</h4>
+                            <form action="/siswa/update-user" class="forms-sample" method="POST">
+                                @csrf
+                                @method('PATCH')
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="nis" placeholder="NIS (Nomor Induk Siswa)" disabled>
+                                    <label for="user_name">Username</label>
+                                    <input name="user_name" type="text" class="form-control form-control-lg" id="user_name" placeholder="{{auth()->user()->user_name}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="nama" placeholder="Nama Siswa" required>
+                                    <label for="email">Email</label>
+                                    <input name="email" type="email" class="form-control form-control-lg" id="user_name" placeholder="{{auth()->user()->email}}" required>
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control form-control-lg" id="kelas" required>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
+                                    <label for="password">Password</label>
+                                    <input name="password" type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password_confirmation">Password Confirm</label>
+                                    <input name="password_confirmation" type="password" class="form-control form-control-lg" id="password_confirmation  " placeholder="Confirm Password" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mr-2">Submit Edit</button>
+                                <button type="reset" class="btn btn-danger light">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Profil --}}
+            <div class="row">
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Setting Profil</h4>
+                            <form action="siswa/update-profil" class="forms-sample" method="POST">
+                                @csrf
+                                @method('PATCH')
+                                <div class="form-group">
+                                    <label for="nis">NIS</label>
+                                    <input type="text" class="form-control form-control-lg" id="nis" placeholder="{{$profil['NIS']}}" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="nama">Nama Siswa</label>
+                                    <input name="nama" type="text" class="form-control form-control-lg" id="nama" placeholder="Nama Siswa" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="kelas">Kelas</label>
+                                    <select name="kelas" class="form-control form-control-lg" id="kelas" required>
+                                        @for ($i = 1; $i < 7; $i++)
+                                            <option class="text-dark" value="{{$i}}">{{$i}}</option>
+                                        @endfor
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="password" placeholder="Confirm Password" required>
                                 </div>
 
                                 <button type="submit" class="btn btn-primary mr-2">Submit Edit</button>

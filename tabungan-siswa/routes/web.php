@@ -74,7 +74,8 @@ Route::middleware('auth')->group(function() {
 
 
             //Update
-
+            Route::patch('/siswa/update-user', [SettingUserController::class, 'updateUser']);
+            Route::patch('/siswa/update-profil', [SettingUserController::class, 'updateProfil']);
 
             //Delete
 
