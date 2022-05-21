@@ -103,7 +103,7 @@ table.table td i {
     padding: 0;
 }
 .pagination li a:hover {
-    color: #666;
+    color: #665;
 }	
 .pagination li.active a {
     background: #03A9F4;
@@ -159,19 +159,18 @@ $(document).ready(function(){
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody id="body-tabel">
                   @foreach ($datanya as $data)
-                    <tr>
-                        <td>{{ $data->id }}</td>
-                        <td>{{ $data->NIS }}</td>
-                        <td>{{ $data->nama }}</td>
-                        <td>{{ $data->kelas }}</td>
-                        <td>{{ $data->saldo }}</td>
+                    <tr id="{{ $data->id }}" class="parent-td">
+                        <td id="{{ $data->id }}">{{ $data->id }}</td>
+                        <td id="{{ $data->NIS }}">{{ $data->NIS }}</td>
+                        <td id="{{ $data->nama }}">{{ $data->nama }}</td>
+                        <td id="{{ $data->kelas }}">{{ $data->kelas }}</td>
+                        <td id="{{ $data->saldo }}">{{ $data->saldo }}</td>
                         <td>
                             <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="/hapus/{{ $data->NIS }}" onclick="confirm('Anda yakin??')" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href="/siswa/{{ $data->id }}" class="edit" id="tombol" onclick="editkan()" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="/hapus/{{ $data->NIS }}/{{ $data->id }}" onclick="return confirm('Anda yakin ingin menghapus siswa?')" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>     
                     @endforeach 

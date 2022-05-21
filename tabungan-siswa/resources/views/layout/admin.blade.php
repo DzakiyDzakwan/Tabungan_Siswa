@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
   <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
   @yield('style')
-
 </head>
 <body>
   <div class="container-scroller">
@@ -33,6 +32,7 @@
   <script src="{{asset('js/vendor.bundle.base.js')}}"></script>
   <script src="{{asset('js/template.js')}}"></script>
   <script src="{{asset('js/bootstrap.js')}}"></script>
+  <script src="js/custom.js"></script>
   @yield('script')
   
 </body>
