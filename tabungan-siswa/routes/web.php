@@ -12,6 +12,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BeritaController;
 use App\Models\Siswa;
 
 /*
@@ -89,8 +91,8 @@ Route::middleware('auth')->group(function() {
             //Read
             Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('admintransaction');
             Route::get('/kategori', [CategoryController::class, 'index']);
-
-
+            Route::get('/admin/berita', [BeritaController::class, 'index']);
+            Route::resource('/admin', AdminController::class);
             //Update
 
 
