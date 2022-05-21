@@ -38,17 +38,17 @@ Route::middleware('guest')->group(function(){
 
     Route::post('/regist', [RegisterController::class, 'regist']);
     Route::get('/siswa', [SiswaController::class, 'index']);
-    Route::get('/hapus/{NIS}', [SiswaController::class, 'hapus']);
-
+    Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
+    Route::get('/siswa/{id}', [SiswaController::class, 'index1']);
+    
 
 
 });
 
-
+Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->group(function() {
 
-    Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
 
@@ -56,7 +56,6 @@ Route::middleware('auth')->group(function() {
 
     
     Route::middleware('checkprofil')->group(function(){
-
     
         Route::middleware('siswa')->group(function() {
 
@@ -66,16 +65,14 @@ Route::middleware('auth')->group(function() {
 
 
             //Read
-            Route::get('/transaction', [TransactionController::class, 'siswa'])->name('transaction');
-            Route::get('/home', [HomeController::class, 'show']);
-            Route::get('/home/cari', [HomeController::class, 'cari']);
-            Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
+            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/home', [HomeController::class, 'index']);
+            Route::get('/post', [PostController::class, 'index']);
             Route::get('/settingUser', [SettingUserController::class, 'index']);
 
 
             //Update
-            Route::patch('/siswa/update-user', [SettingUserController::class, 'updateUser']);
-            Route::patch('/siswa/update-profil', [SettingUserController::class, 'updateProfil']);
+
 
             //Delete
 
@@ -84,10 +81,9 @@ Route::middleware('auth')->group(function() {
         Route::middleware('admin')->group(function(){
             //Admin
             //Create
-            Route::post('/transaction/create', [TransactionController::class, 'store']);
+
 
             //Read
-            Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('admintransaction');
             Route::get('/kategori', [CategoryController::class, 'index']);
 
 
