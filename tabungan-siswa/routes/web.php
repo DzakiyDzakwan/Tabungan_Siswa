@@ -37,9 +37,7 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
     Route::post('/regist', [RegisterController::class, 'regist']);
-    Route::get('/siswa', [SiswaController::class, 'index']);
-    Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
-    Route::get('/siswa/{id}', [SiswaController::class, 'index1']);
+    
     
 
 
@@ -48,6 +46,8 @@ Route::middleware('guest')->group(function(){
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::middleware('auth')->group(function() {
+
+    
 
 
     Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
@@ -62,7 +62,9 @@ Route::middleware('auth')->group(function() {
 
             //User
             //Create
-
+            Route::get('/siswa', [SiswaController::class, 'index']);
+            Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
+            Route::get('/siswa/{id}', [SiswaController::class, 'index1']);
 
             //Read
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');

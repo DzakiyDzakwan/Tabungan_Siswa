@@ -11,9 +11,8 @@ class SiswaController extends Controller
 {   
     public function index() {
         $datasiswa = Siswa::join('users', 'siswas.user', '=', 'users.id')->get();
-        $datasiswas = $datasiswa->where('nama','LIKE','%'.'b'.'%')->get();
         return view('admin.adminsiswa', [
-            'datanya' => $datasiswas
+            'datanya' => $datasiswa
         ]);
     }
     public function index1($id) {
