@@ -12,6 +12,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\SettingUserController;
 use App\Http\Controllers\SiswaController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BeritaController;
 use App\Models\Siswa;
 
 /*
@@ -37,18 +39,18 @@ Route::middleware('guest')->group(function(){
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
 
     Route::post('/regist', [RegisterController::class, 'regist']);
-    
-    
+    Route::get('/siswa', [SiswaController::class, 'index']);
+    Route::get('/hapus/{NIS}', [SiswaController::class, 'hapus']);
+
 
 
 });
 
-Route::post('/logout', [LoginController::class, 'logout']);
+
 
 Route::middleware('auth')->group(function() {
 
-    
-
+    Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
 
@@ -56,23 +58,26 @@ Route::middleware('auth')->group(function() {
 
     
     Route::middleware('checkprofil')->group(function(){
+
     
         Route::middleware('siswa')->group(function() {
 
 
             //User
             //Create
-            
+
 
             //Read
-            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
-            Route::get('/home', [HomeController::class, 'index']);
-            Route::get('/post', [PostController::class, 'index']);
+            Route::get('/transaction', [TransactionController::class, 'siswa'])->name('transaction');
+            Route::get('/home', [HomeController::class, 'show']);
+            Route::get('/home/cari', [HomeController::class, 'cari']);
+            Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
             Route::get('/settingUser', [SettingUserController::class, 'index']);
 
 
             //Update
-
+            Route::patch('/siswa/update-user', [SettingUserController::class, 'updateUser']);
+            Route::patch('/siswa/update-profil', [SettingUserController::class, 'updateProfil']);
 
             //Delete
 
@@ -81,19 +86,17 @@ Route::middleware('auth')->group(function() {
         Route::middleware('admin')->group(function(){
             //Admin
             //Create
-
+            Route::post('/transaction/create', [TransactionController::class, 'store']);
 
             //Read
+            Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('admintransaction');
             Route::get('/kategori', [CategoryController::class, 'index']);
-            Route::get('/siswa', [SiswaController::class, 'index']);
-
-
+            Route::get('/admin/berita', [BeritaController::class, 'index']);
+            Route::resource('/admin', AdminController::class);
             //Update
-            Route::get('/siswa/{id}', [SiswaController::class, 'index1']);
 
 
             //Delete
-            Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
 
         });
 
