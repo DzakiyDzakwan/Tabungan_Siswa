@@ -103,7 +103,7 @@ table.table td i {
     padding: 0;
 }
 .pagination li a:hover {
-    color: #665;
+    color: #666;
 }	
 .pagination li.active a {
     background: #03A9F4;
@@ -122,7 +122,14 @@ table.table td i {
     float: left;
     margin-top: 6px;
     font-size: 95%;
-}    
+}
+
+/* Modal styles */
+.add-button{
+    position: relative;
+    left: 80px;
+    float: right;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -131,7 +138,7 @@ $(document).ready(function(){
 </script>
 @endsection
 @section('title')
-  <title>Siswa</title>
+  <title>Berita</title>
 @endsection
 @section('content')
 <div class="container-xl">
@@ -139,7 +146,48 @@ $(document).ready(function(){
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
+                    <div class="col-sm-4"><h2>Customer <b>Details</b></h2></div>
+                    {{-- addEmployeeModal --}}
+                    <div class="col-sm-4">
+                        <div class="add-button">
+                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Data</span></a>
+                        </div>       
+                    </div>
+                    <div id="addEmployeeModal" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <form>
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Add Data</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label>JUDUL</label>
+                                        <input type="text" class="form-control" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>IMAGE</label>
+                                        <input type="text" class="form-control" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>ISI</label>
+                                        <textarea class="form-control" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>AUTHOR</label>
+                                        <input type="text" class="form-control" required />
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
+                                    <input type="submit" class="btn btn-success" value="Add" />
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- end addEmployee --}}
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
@@ -152,28 +200,27 @@ $(document).ready(function(){
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>NIS<i class="fa fa-sort"></i></th>
-                        <th>NAMA</th>
-                        <th>KELAS <i class="fa fa-sort"></i></th>
-                        <th>SALDO</th>
+                        <th>JUDUL<i class="fa fa-sort"></i></th>
+                        <th>IMAGE</th>
+                        <th>ISI <i class="fa fa-sort"></i></th>
+                        <th>AUTHOR</th>
+                        <th>CATEGORY <i class="fa fa-sort"></i></th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="body-tabel">
-                  @foreach ($datanya as $data)
-                    <tr id="{{ $data->id }}" class="parent-td">
-                        <td id="{{ $data->id }}">{{ $data->id }}</td>
-                        <td id="{{ $data->NIS }}">{{ $data->NIS }}</td>
-                        <td id="{{ $data->nama }}">{{ $data->nama }}</td>
-                        <td id="{{ $data->kelas }}">{{ $data->kelas }}</td>
-                        <td id="{{ $data->saldo }}">{{ $data->saldo }}</td>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Thomas Hardy</td>
+                        <td>89 Chiaroscuro Rd.</td>
+                        <td>Portland</td>
+                        <td>97219</td>
+                        <td>USA</td>
                         <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="/siswa/{{ $data->id }}" class="edit" id="tombol" onclick="editkan()" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="/hapus/{{ $data->NIS }}/{{ $data->id }}" onclick="return confirm('Anda yakin ingin menghapus siswa?')" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
-                    </tr>     
-                    @endforeach 
+                    </tr>      
                 </tbody>
             </table>
             <div class="clearfix">

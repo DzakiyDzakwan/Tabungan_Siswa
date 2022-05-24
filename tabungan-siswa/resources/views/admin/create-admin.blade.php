@@ -103,7 +103,7 @@ table.table td i {
     padding: 0;
 }
 .pagination li a:hover {
-    color: #665;
+    color: #666;
 }	
 .pagination li.active a {
     background: #03A9F4;
@@ -122,7 +122,14 @@ table.table td i {
     float: left;
     margin-top: 6px;
     font-size: 95%;
-}    
+} 
+
+/* Modal styles */
+.add-button{
+    position: relative;
+    left: 80px;
+    float: right;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -131,7 +138,7 @@ $(document).ready(function(){
 </script>
 @endsection
 @section('title')
-  <title>Siswa</title>
+<title>Admin</title>
 @endsection
 @section('content')
 <div class="container-xl">
@@ -139,54 +146,29 @@ $(document).ready(function(){
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
-                    <div class="col-sm-4">
-                        <div class="search-box">
-                            <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
-                        </div>
-                    </div>
+                    <div class="col-sm-4"><h2>Customer <b>Details</b></h2></div>
+                    
                 </div>
             </div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NIS<i class="fa fa-sort"></i></th>
-                        <th>NAMA</th>
-                        <th>KELAS <i class="fa fa-sort"></i></th>
-                        <th>SALDO</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="body-tabel">
-                  @foreach ($datanya as $data)
-                    <tr id="{{ $data->id }}" class="parent-td">
-                        <td id="{{ $data->id }}">{{ $data->id }}</td>
-                        <td id="{{ $data->NIS }}">{{ $data->NIS }}</td>
-                        <td id="{{ $data->nama }}">{{ $data->nama }}</td>
-                        <td id="{{ $data->kelas }}">{{ $data->kelas }}</td>
-                        <td id="{{ $data->saldo }}">{{ $data->saldo }}</td>
-                        <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="/siswa/{{ $data->id }}" class="edit" id="tombol" onclick="editkan()" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="/hapus/{{ $data->NIS }}/{{ $data->id }}" onclick="return confirm('Anda yakin ingin menghapus siswa?')" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                        </td>
-                    </tr>     
-                    @endforeach 
-                </tbody>
-            </table>
-            <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                <ul class="pagination">
-                    <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
-                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                    <li class="page-item"><a href="#" class="page-link">3</a></li>
-                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                    <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
-                </ul>
+            <div class="card-body">
+                <form action="{{url('admin')}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" id="id" name="admin_id" class="form-control" placeholder="ID">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" placeholder="Pekerjaan">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="status" name="status" class="form-control" placeholder="Status">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>  

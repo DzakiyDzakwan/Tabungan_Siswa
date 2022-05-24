@@ -70,3 +70,5 @@ Register - Dzakiy
 
 Deadline  : 24 Mei 2022 Full Feature
 Seminggu 2 kali meet mulai tanggal 16 Mei : Sabtu & Rabu, Pukul : 20.00 WIB paling lama 20.30 WIB. Kalau tidak bisa hadir silahkan hubungi GRUP Terdekat
+
+input username , email, pass ke tabel user
