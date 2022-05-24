@@ -27,6 +27,8 @@
       @yield('content')
     
   </div>
+
+  @include('sweetalert::alert')
   
 
   <script src="{{asset('js/vendor.bundle.base.js')}}"></script>

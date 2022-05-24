@@ -56,6 +56,9 @@ Route::middleware('auth')->group(function() {
 
     
     Route::middleware('checkprofil')->group(function(){
+
+        //Update Profile
+        Route::patch('/update-profil', [SettingUserController::class, 'update']);
     
         Route::middleware('siswa')->group(function() {
 
@@ -65,7 +68,7 @@ Route::middleware('auth')->group(function() {
             
 
             //Read
-            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/transaction', [TransactionController::class, 'siswa'])->name('transaction');
             Route::get('/home', [HomeController::class, 'index']);
             Route::get('/post', [PostController::class, 'index']);
             Route::get('/settingUser', [SettingUserController::class, 'index']);
@@ -86,6 +89,9 @@ Route::middleware('auth')->group(function() {
             //Read
             Route::get('/kategori', [CategoryController::class, 'index']);
             Route::get('/siswa', [SiswaController::class, 'index']);
+            Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('transaction-Admin');
+            Route::post('/transaction/create', [TransactionController::class, 'store']);
+            Route::get('/settingAdmin', [SettingUserController::class, 'index']);
 
 
             //Update
@@ -102,14 +108,6 @@ Route::middleware('auth')->group(function() {
     
 
 });
-
-
-
-/* -------------------------------------------------------------------------------------- */
-
-
-
-
 
 
 

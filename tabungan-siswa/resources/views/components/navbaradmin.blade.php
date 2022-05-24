@@ -16,7 +16,7 @@
           <img src="images/profile.png" alt="profile"/>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-          <a href="/setting" class="dropdown-item">
+          <a href="/settingAdmin" class="dropdown-item">
             <i class="mdi mdi-account menu-icon"></i>
             Settings
           </a>

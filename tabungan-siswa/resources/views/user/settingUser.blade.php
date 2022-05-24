@@ -53,38 +53,79 @@
             </div>
 
             {{-- Profil --}}
-            <div class="row">
-                <div class="col-lg-12 grid-margin stretch-card">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Setting Profil</h4>
-                            <form action="siswa/update-profil" class="forms-sample" method="POST">
-                                @csrf
-                                @method('PATCH')
-                                <div class="form-group">
-                                    <label for="nis">NIS</label>
-                                    <input type="text" class="form-control form-control-lg" id="nis" placeholder="{{$profil['NIS']}}" disabled>
-                                </div>
-                                <div class="form-group">
-                                    <label for="nama">Nama Siswa</label>
-                                    <input name="nama" type="text" class="form-control form-control-lg" id="nama" placeholder="Nama Siswa" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="kelas">Kelas</label>
-                                    <select name="kelas" class="form-control form-control-lg" id="kelas" required>
-                                        @for ($i = 1; $i < 7; $i++)
-                                            <option class="text-dark" value="{{$i}}">{{$i}}</option>
-                                        @endfor
-                                    </select>
-                                </div>
 
-                                <button type="submit" class="btn btn-primary mr-2">Submit Edit</button>
-                                <button type="reset" class="btn btn-danger light">Cancel</button>
-                            </form>
+                
+                @if (auth()->user()->role === 'siswa')
+                {{-- Siswa--}}
+                <div class="row">
+                    <div class="col-lg-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Setting Profil</h4>
+                                <form action="update-profil" class="forms-sample" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <div class="form-group">
+                                        <label for="nis">NIS</label>
+                                        <input type="text" class="form-control form-control-lg" id="nis" placeholder="{{$profil['NIS']}}" disabled>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nama">Nama Siswa</label>
+                                        <input name="nama" type="text" class="form-control form-control-lg" id="nama" placeholder="Nama Siswa" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="kelas">Kelas</label>
+                                        <select name="kelas" class="form-control form-control-lg" id="kelas" required>
+                                            @for ($i = 1; $i < 7; $i++)
+                                                <option class="text-dark" value="{{$i}}">{{$i}}</option>
+                                            @endfor
+                                        </select>
+                                    </div>
+    
+                                    <button type="submit" class="btn btn-primary mr-2">Submit Edit</button>
+                                    <button type="reset" class="btn btn-danger light">Cancel</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                 {{-- Siswa End --}}
+                @else
+                    <div class="row">
+                        <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Setting Profil</h4>
+                                    <form action="update-profil" class="forms-sample" method="POST">
+                                        @csrf
+                                        @method('PATCH')
+                                        <div class="form-group">
+                                            <label for="nama">Nama Admin</label>
+                                            <input name="nama" type="text" class="form-control form-control-lg" id="nama" placeholder="Nama Admin" required value="{{$profil['nama']}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pekerjaan">Pekerjaan</label>
+                                            <input name="pekerjaan" type="text" class="form-control form-control-lg" id="pekerjaan" placeholder="Pekerjaan" value="{{$profil['pekerjaan']}}">
+                                        </div>
+                                        {{-- <div class="form-group">
+                                            <label for="kelas">Kelas</label>
+                                            <select name="kelas" class="form-control form-control-lg" id="kelas" required>
+                                                @for ($i = 1; $i < 7; $i++)
+                                                    <option class="text-dark" value="{{$i}}">{{$i}}</option>
+                                                @endfor
+                                            </select>
+                                        </div> --}}
+        
+                                        <button type="submit" class="btn btn-primary mr-2">Submit Edit</button>
+                                        <button type="reset" class="btn btn-danger light">Cancel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            
+               
 
         </div>
     </div>

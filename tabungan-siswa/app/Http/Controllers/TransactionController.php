@@ -16,7 +16,7 @@ class TransactionController extends Controller
 
             $siswa = Siswa::join('users', 'users.id', '=', 'siswas.user')->get();
 
-            $historySaldo = Transaction::join('siswas', 'transactions.siswa', '=', 'siswas.NIS')->join('admins', 'transactions.admin', '=', 'admins.admin_id')->select('transactions.transaction_date', 'siswas.nama AS siswa', 'transactions.saldo', 'admins.nama AS admin', 'transactions.keterangan')->orderBy('transaction_date', 'asc')->paginate(5);
+            $historySaldo = Transaction::join('siswas', 'transactions.siswa', '=', 'siswas.NIS')->join('admins', 'transactions.admin', '=', 'admins.admin_id')->select('transactions.transaction_date', 'siswas.nama AS siswa', 'transactions.saldo', 'admins.nama AS admin', 'transactions.keterangan')->orderBy('transaction_date', 'desc')->paginate(5);
             $saldoKeluar = Transaction::where('keterangan', 'out')->sum('saldo');
             $saldoMasuk = Transaction::where('keterangan', 'in')->sum('saldo');
 
