@@ -11,12 +11,13 @@ class HomeController extends Controller
     public function show() {
         $posts = DB::table('beritas')->orderBy('berita_id')->paginate(6);
             return view('user.home', ['posts' => $posts]);
+            
     }
 
     public function cari(Request $request) {
         $cari = $request->cari;
-        $beritas = DB::table('beritas')->where('judul', 'LIKE', "%".$cari."%")->paginate();
-            return view('user.home', ['beritas' => $beritas]);
+        $posts = DB::table('beritas')->where('judul', 'like', "%".$cari."%")->paginate();
+            return view('user.home', ['beritas' => $posts]);
     }
 
 

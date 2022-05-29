@@ -19,13 +19,13 @@ class BeritaSeeder extends Seeder
         $posts = [];
         $faker = Faker::create();
 
-        for($i = 0; $i <= 20; $i++) {
+        for($i = 0; $i <= 30; $i++) {
 
             $date = date('Y-m-d H:i:s');
             $posts[] = [
                 'judul' => $faker->sentence(rand(10, 15)),
-                'image' => $faker->imageUrl(360, 360, 'animals', true, 'dogs', true, 'jpg'),
-                'isi' => $faker->paragraph($nb=30, $asText=false),
+                'image' => $faker->imageUrl(480, 360, 'animals', true, 'cats', true, 'jpg'),
+                'isi' => $faker->paragraph($nb=50, $asText=false),
                 'author' => 1,
                 'category' => 'A',
                 'created_at' => $date,

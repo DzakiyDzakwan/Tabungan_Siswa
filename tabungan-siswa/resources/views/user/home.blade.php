@@ -29,8 +29,14 @@
 
                                     {{-- Fungsi Search Data --}}
                                     <form action="/home/cari" method="GET">
-                                        <input type="text" name="cari" placeholder="Search..." value={{ old('cari') }}>
-                                        <input type="submit" placeholder="Search">
+                                        <div class="input-group my-3" style="width: 1100px">
+                                            <input value="{{ old('cari') }}" name="cari"  type="text" class="form-control" placeholder="Search this blog">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-secondary" value="Search" type="submit">
+                                                    <i class="mdi mdi-search menu-icon"></i>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </form>
                                     
 
