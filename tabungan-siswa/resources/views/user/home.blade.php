@@ -25,15 +25,15 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="container">
-                                <div class="row col-lg-12 text-center">
+                                <div class="row col-lg-12 justify-content-center">
 
                                     {{-- Fungsi Search Data --}}
-                                    <form action="/home/cari" method="GET">
+                                    <form action="/home" method="GET">
                                         <div class="input-group my-3" style="width: 1100px">
-                                            <input value="{{ old('cari') }}" name="cari"  type="text" class="form-control" placeholder="Search this blog">
+                                            <input value="{{ request('cari') }}" name="cari" type="text" class="form-control" placeholder="Search this blog">
                                             <div class="input-group-append">
-                                                <button class="btn btn-secondary" value="Search" type="submit">
-                                                    <i class="mdi mdi-search menu-icon"></i>
+                                                <button class="btn btn-primary" type="submit">
+                                                    <i class="mdi mdi-search menu-icon">Search</i>
                                                 </button>
                                             </div>
                                         </div>

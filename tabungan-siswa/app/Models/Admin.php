@@ -15,12 +15,6 @@ class Admin extends Model
         'updated_at'
     ];
 
-    protected $table = "admins";
-    protected $primaryKey = "admin_id";
-    protected $fillable = [
-        'admin_id','nama','pekerjaan','status'
-    ];
-
     public function user() {
         return $this->belongsTo(User::class);
     }
