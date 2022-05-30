@@ -15,6 +15,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
 use App\Models\Siswa;
+use App\Http\Controllers\ConfirmationAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,8 +72,8 @@ Route::middleware('auth')->group(function() {
 
             //Read
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
-            Route::get('/home', [HomeController::class, 'show']);
-            // Route::get('/home/cari', [HomeController::class, 'cari'])->name('cari');
+            Route::get('/home', [HomeController::class, 'index']);
+            Route::get('/home', [HomeController::class, 'cari']);
             Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
             Route::get('/settingUser', [SettingUserController::class, 'index']);
 
@@ -99,6 +100,7 @@ Route::middleware('auth')->group(function() {
             Route::get('/settingAdmin', [SettingUserController::class, 'index']);
             Route::get('/admin/berita', [BeritaController::class, 'index']);
             Route::resource('/admin', AdminController::class);
+            Route::get('/adminConfirmation', [ConfirmationAdminController::class, 'index']);
             //Update
 
 

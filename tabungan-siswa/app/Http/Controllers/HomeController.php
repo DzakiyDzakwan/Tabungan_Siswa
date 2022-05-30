@@ -6,28 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
 class HomeController extends Controller
 {
-    public function show() {
+    public function index() {
 
-        $posts = DB::table('beritas');
-        if(request('cari')) {
-            $posts->where('judul', 'like', '%' . request('cari') . '%')
-                ->orWhere('author', 'like', '%' . request('cari') . '%');
-        }
-        
-        $posts = DB::table('beritas')->orderBy('berita_id')->paginate(6);
-            
-        return view('user.home', ['posts' => $posts]);
-            
+        $jlhBerita = 6;
+        $berita = DB::table('beritas')->paginate($jlhBerita);
+            return view('user.home', ['beritas' => $berita]);
     }
 
-    // public function cari(Request $request) {
+    public function cari(Request $request) {
+        $jlhBerita = 6;
+        $cari = $request->cari;
 
-    //     $cari = $request->cari;
-    //     $posts = DB::table('beritas')->where('judul', 'like', "%".$cari."%")->paginate();
-    //         return view('user.home', ['beritas' => $posts]);
-    // }
+        $berita = DB::table('beritas')
+            ->where('judul', 'like', "%".$cari."%")
+            ->orWhere('isi', 'like', "%".$cari."%")->paginate($jlhBerita);
+            return view('user.home', ['beritas' => $berita]);
+    }
 
 
 }

@@ -28,12 +28,15 @@
                                 <div class="row col-lg-12 justify-content-center">
 
                                     {{-- Fungsi Search Data --}}
+                                    <a href="home" class="h1 text-black text-decoration-none">
+                                        KuTabung NEWS
+                                    </a>
                                     <form action="/home" method="GET">
-                                        <div class="input-group my-3" style="width: 1100px">
-                                            <input value="{{ request('cari') }}" name="cari" type="text" class="form-control" placeholder="Search this blog">
+                                        <div class="input-group my-4" style="width:800px">
+                                            <input value="{{ old('cari') }}" name="cari" type="text"class="form-control" placeholder="Search Blog...">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary" type="submit">
-                                                    <i class="mdi mdi-search menu-icon">Search</i>
+                                                    Search
                                                 </button>
                                             </div>
                                         </div>
@@ -42,11 +45,11 @@
 
                                 </div>
                                 <div class="row">
-                                    <!-- Blog entries-->
+                                    
                                     <div class="col-lg-12">
                                         <div class="row">
 
-                                            @foreach ($posts as $post)
+                                            @foreach ($beritas as $post)
 
                                                 <div class="col-lg-6">
                                                     <!-- Blog post-->
@@ -66,7 +69,7 @@
                                         </div>
                                         {{-- Pagination --}}
                                         <div class="row justify-content-center">
-                                            {{ $posts->links() }}
+                                            {{ $beritas->links() }}
                                         </div>
 
                                     </div>

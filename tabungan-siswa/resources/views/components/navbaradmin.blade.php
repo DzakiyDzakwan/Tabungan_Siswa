@@ -37,16 +37,16 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
           <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-          <a class="dropdown-item preview-item">
+          <a href="adminConfirmation" class="dropdown-item preview-item text-black text-decoration-none">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-success">
                 <i class="ti-info-alt mx-0"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-normal">Application Error</h6>
+              <h6 class="preview-subject font-weight-normal">Incoming Balance</h6>
               <p class="font-weight-light small-text mb-0 text-muted">
-                Just now
+                Need Confirmation !
               </p>
             </div>
           </a>

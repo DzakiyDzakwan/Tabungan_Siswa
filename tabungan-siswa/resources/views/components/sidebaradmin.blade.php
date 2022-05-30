@@ -31,5 +31,11 @@
         <span class="menu-title">Transaction</span>
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/adminConfirmation">
+        <i class="mdi mdi-ticket menu-icon"></i>
+        <span class="menu-title">Confirmation</span>
+      </a>
+    </li>
   </ul>
 </nav>
