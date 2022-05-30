@@ -28,6 +28,7 @@ class TransactionController extends Controller
             return view('admin.transaction', [
                 'saldoTotal'=>$totalSaldo,
                 'saldoKeluar'=>$saldoKeluar,
+                'saldoMasuk'=>$saldoMasuk,
                 'historySaldo'=>$historySaldo,
                 'siswa' => $siswa
             ]);

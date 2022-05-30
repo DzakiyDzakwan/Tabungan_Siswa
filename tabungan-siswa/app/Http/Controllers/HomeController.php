@@ -17,7 +17,8 @@ class HomeController extends Controller
         }
         
         $posts = DB::table('beritas')->orderBy('berita_id')->paginate(6);
-            return view('user.home', ['posts' => $posts]);
+            
+        return view('user.home', ['posts' => $posts]);
             
     }
 

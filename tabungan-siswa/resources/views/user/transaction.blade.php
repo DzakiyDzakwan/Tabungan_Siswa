@@ -144,11 +144,40 @@
 
   {{-- BALANCE SECTION --}}
   <div class="container-fluid  mx-auto p-3" >
-    <div class="card card-dark-blue shadow">
+    {{-- <div class="card card-dark-blue shadow">
       <div class="card-body">
         <h3 class="card-title text-center text-white fs-3">Balance</h3>
         <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
       </div>
+    </div> --}}
+    <div class="row">
+        <div class="col col-lg-12">
+            <div class="card card-dark-blue shadow">
+                <div class="card-body">
+                  <h3 class="card-title text-center text-white fs-3">Total Saldo</h3>
+                  <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-lg-6 my-3">
+            <div class="card bg-success shadow">
+                <div class="card-body text-white">
+                  <h3 class="card-title text-center text-white fs-3">Saldo Masuk</h3>
+                  <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col col-lg-6 my-3">
+            <div class="card card-light-danger shadow">
+                <div class="card-body">
+                  <h3 class="card-title text-center text-white fs-3">Saldo Keluar</h3>
+                  <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+                </div>
+            </div>
+        </div>
+
     </div>
   </div>
   {{-- BALANCE SECTION END --}}
