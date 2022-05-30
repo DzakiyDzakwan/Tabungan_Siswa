@@ -65,7 +65,7 @@
                                         
                                         </div>
                                         {{-- Pagination --}}
-                                        <div class="row text-center">
+                                        <div class="row justify-content-center">
                                             {{ $posts->links() }}
                                         </div>
 
