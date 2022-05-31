@@ -16,9 +16,11 @@ class CreateConfirmationsTable extends Migration
         Schema::create('confirmations', function (Blueprint $table) {
             $table->id('confirmation_id');
             $table->integer('saldo');
-            $table->enum('status', ['pending','complete', 'rejected']);
-            $table->string('jenis_transaksi');
-            $table->bigInteger('admin')->unsigned();
+            $table->enum('status', ['pending','accepted', 'rejected']);
+            $table->enum('jenis_transaksi', ['bank', 'fintech']);
+            $table->string('bukti', 255);
+            $table->date('transfer_date');
+            $table->bigInteger('admin')->nullable(true)->unsigned();
             $table->char('siswa');
             $table->foreign('admin')->references('admin_id')->on('admins')->onDeleteRestrict()->onUpdateCascade();
             $table->foreign('siswa')->references('NIS')->on('siswas')->onDeleteRestrict()->onUpdateCascade();

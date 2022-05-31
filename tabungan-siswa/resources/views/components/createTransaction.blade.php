@@ -12,19 +12,23 @@
         <div class="modal-body">
           
           <div class="form-group">
-            <input name="saldo" type="number" class="form-control" id="saldo" placeholder="saldo" required>
+            <label class="px-2" for="saldo">Saldo Transaksi</label>
+            <input name="saldo" type="number" class="form-control text-primary" id="saldo" placeholder="saldo" required>
           </div>
           <div class="form-group">
-            <input name="transaction_date" type="date" class="form-control" id="transaction_date" placeholder="Full Name" required>
+            <label class="px-2" for="transaction_date">Tanggal Transaksi</label>
+            <input name="transaction_date" type="date" class="form-control text-primary" id="transaction_date" placeholder="Full Name" required>
           </div>
           <div class="form-group">
-            <select name="keterangan" class="form-control text-primary" id="kelas" required>
+            <label class="px-2" for="keterangan">Keterangan Transaksi</label>
+            <select name="keterangan" class="form-control text-primary text-primary" id="keterangan" required>
               <option class="text-success" value="in">Masuk</option>
               <option class="text-danger" value="out">Keluar</option>
             </select>
           </div>
           <div class="form-group">
-            <select name="siswa" class="form-control text-dark" id="kelas" required>
+            <label class="px-2" for="siswa">Saldo Konfirmasi</label>
+            <select name="siswa" class="form-control text-primary" id="siswa" required>
               @foreach ($siswa as $murid)
               <option  value="{{$murid['NIS']}}">{{$murid['nama']}}</option>
               @endforeach

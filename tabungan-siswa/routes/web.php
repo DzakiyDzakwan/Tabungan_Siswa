@@ -15,7 +15,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
 use App\Models\Siswa;
-use App\Http\Controllers\ConfirmationAdminController;
+use App\Http\Controllers\ConfirmationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function() {
 
             //User
             //Create
-
+            Route::post('/confirmation/create', [ConfirmationController::class, 'store']);
 
             //Read
             Route::get('/transaction', [TransactionController::class, 'siswa'])->name('transaction');
@@ -76,13 +76,16 @@ Route::middleware('auth')->group(function() {
             Route::get('/home', [HomeController::class, 'cari']);
             Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
             Route::get('/settingUser', [SettingUserController::class, 'index']);
+            Route::get('/confirmation', [ConfirmationController::class, 'index']);
 
 
             //Update
             Route::patch('/siswa/update-user', [SettingUserController::class, 'updateUser']);
             Route::patch('/siswa/update-profil', [SettingUserController::class, 'updateProfil']);
+            Route::patch('/confirmation/edit', [ConfirmationController::class, 'update']);
 
             //Delete
+            Route::delete('/confirmation/delete/{id}', [ConfirmationController::class, 'destroy']);
 
         });
     
@@ -100,10 +103,12 @@ Route::middleware('auth')->group(function() {
             Route::get('/settingAdmin', [SettingUserController::class, 'index']);
             Route::get('/admin/berita', [BeritaController::class, 'index']);
             Route::resource('/admin', AdminController::class);
-            Route::get('/adminConfirmation', [ConfirmationAdminController::class, 'index']);
+            Route::get('/adminConfirmation', [ConfirmationController::class, 'index']);
 
             //Update
             Route::patch('/transaction/edit', [TransactionController::class, 'update']);
+            Route::patch('/confirmation/accept/{id}', [ConfirmationController::class, 'accept']);
+            Route::patch('/confirmation/reject/{id}', [ConfirmationController::class, 'reject']);
 
             //Delete
             Route::delete('/transaction/delete/{id}', [TransactionController::class, 'destroy']);

@@ -214,7 +214,7 @@
                     @foreach ($historySaldo as $history)
                       <tr>
                         <td>1</td>
-                        {{ $time = strtotime($history['transaction_date']) }}
+                        <?php $time = strtotime($history['transaction_date'])  ?>
                         <td>{{ date('d/M/Y',$time) }}</td>
                         <td>{{$history['nama']}}</td>
                         

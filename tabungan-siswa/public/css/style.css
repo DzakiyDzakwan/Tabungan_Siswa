@@ -22081,6 +22081,15 @@ code {
   font-size: .75rem;
 }
 
+.card.card-success {
+  background: #49de64;
+  color: #ffffff;
+}
+
+.card.card-success:hover {
+  background: #83fc95;
+}
+
 .card.card-tale {
   background: #7DA0FA;
   color: #ffffff;

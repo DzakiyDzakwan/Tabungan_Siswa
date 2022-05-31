@@ -127,6 +127,7 @@
   }    
 </style>
 @endsection
+
 @section('content')
 
 @include('components.rupiah')
