@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function() {
 
 
             //Read
-            Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+            Route::get('/transaction', [TransactionController::class, 'siswa'])->name('transaction');
             Route::get('/home', [HomeController::class, 'index']);
             Route::get('/home', [HomeController::class, 'cari']);
             Route::get('/post/{berita_id}', [PostController::class, 'detailPost']);
@@ -101,10 +101,12 @@ Route::middleware('auth')->group(function() {
             Route::get('/admin/berita', [BeritaController::class, 'index']);
             Route::resource('/admin', AdminController::class);
             Route::get('/adminConfirmation', [ConfirmationAdminController::class, 'index']);
-            //Update
 
+            //Update
+            Route::patch('/transaction/edit', [TransactionController::class, 'update']);
 
             //Delete
+            Route::delete('/transaction/delete/{id}', [TransactionController::class, 'destroy']);
 
         });
 

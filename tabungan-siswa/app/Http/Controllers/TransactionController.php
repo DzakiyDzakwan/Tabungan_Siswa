@@ -16,7 +16,7 @@ class TransactionController extends Controller
 
             $siswa = Siswa::join('users', 'users.id', '=', 'siswas.user')->get();
 
-            $historySaldo = Transaction::join('siswas', 'transactions.siswa', '=', 'siswas.NIS')->join('admins', 'transactions.admin', '=', 'admins.admin_id')->select('transactions.transaction_date', 'siswas.nama AS siswa', 'transactions.saldo', 'admins.nama AS admin', 'transactions.keterangan')->orderBy('transaction_date', 'desc')->paginate(5);
+            $historySaldo = Transaction::join('siswas', 'transactions.siswa', '=', 'siswas.NIS')->join('admins', 'transactions.admin', '=', 'admins.admin_id')->select('transactions.transaction_id', 'transactions.transaction_date', 'siswas.nama AS siswa', 'transactions.saldo', 'admins.nama AS admin', 'transactions.keterangan')->orderBy('transaction_date', 'desc')->paginate(5);
             $saldoKeluar = Transaction::where('keterangan', 'out')->sum('saldo');
             $saldoMasuk = Transaction::where('keterangan', 'in')->sum('saldo');
 
@@ -55,6 +55,7 @@ class TransactionController extends Controller
             return view('user.transaction', [
                 'saldoTotal'=>$totalSaldo,
                 'saldoKeluar'=>$saldoKeluar,
+                'saldoMasuk'=>$saldoMasuk,
                 'historySaldo'=>$historySaldo,
             ]);
     }
@@ -82,6 +83,32 @@ class TransactionController extends Controller
         ]);
 
         return back()->with('success', 'Transaksi Berhasil');
+
+    }
+
+    public function update(Request $request) {
+        
+        $validate = $request->validate([
+            'saldo'=> "required",
+        ]);
+
+        Transaction::where('transaction_id', $request->transaction_id)->update([
+
+            'saldo'=>$request->saldo,
+            'transaction_date'=>$request->transaction_date,
+            'keterangan'=>$request->keterangan,
+            'siswa'=>$request->siswa,
+        ]);
+
+        return back()->with('success', 'Data Berhasil diubah');
+
+    }
+
+    public function destroy($id) {
+
+        Transaction::where('transaction_id', $id)->delete();
+
+        return back()->with('success', 'Data Berhasil dihapus');
 
     }
 

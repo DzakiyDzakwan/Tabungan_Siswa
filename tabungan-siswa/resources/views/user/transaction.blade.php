@@ -131,6 +131,8 @@
 
 {{-- CONTENT --}}
 
+@include('components.rupiah')
+
 <div class="container-xl">
 
   @if (session()->has('success'))
@@ -155,7 +157,7 @@
             <div class="card card-dark-blue shadow">
                 <div class="card-body">
                   <h3 class="card-title text-center text-white fs-3">Total Saldo</h3>
-                  <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+                  <h5 class="card-text text-center font-weight-normal">{{rupiah($saldoTotal)}}</h5>
                 </div>
             </div>
         </div>
@@ -164,7 +166,7 @@
             <div class="card bg-success shadow">
                 <div class="card-body text-white">
                   <h3 class="card-title text-center text-white fs-3">Saldo Masuk</h3>
-                  <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+                  <h5 class="card-text text-center font-weight-normal">{{rupiah($saldoMasuk)}}</h5>
                 </div>
             </div>
         </div>
@@ -173,7 +175,7 @@
             <div class="card card-light-danger shadow">
                 <div class="card-body">
                   <h3 class="card-title text-center text-white fs-3">Saldo Keluar</h3>
-                  <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+                  <h5 class="card-text text-center font-weight-normal">{{rupiah($saldoKeluar)}}</h5>
                 </div>
             </div>
         </div>
@@ -212,14 +214,15 @@
                     @foreach ($historySaldo as $history)
                       <tr>
                         <td>1</td>
-                        <td>{{$history['transaction_date']}}</td>
+                        {{ $time = strtotime($history['transaction_date']) }}
+                        <td>{{ date('d/M/Y',$time) }}</td>
                         <td>{{$history['nama']}}</td>
                         
                         @if ($history['keterangan'] === "in" )
-                          <td class="text-success">{{$history['saldo']}}</td>
+                          <td class="text-success">{{rupiah($history['saldo'])}}</td>
                           <td><span class="badge badge-success">masuk</span></td>
                         @else
-                          <td class="text-danger">{{$history['saldo']}}</td>
+                          <td class="text-danger">{{rupiah($history['saldo'])}}</td>
                           <td><span class="badge badge-danger">keluar</span></td>
                         @endif
                         

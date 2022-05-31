@@ -129,85 +129,24 @@
 @endsection
 @section('content')
 
-<!-- Modal -->
-
-{{-- Edit Modal --}}
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog ">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Transaction</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-{{-- Edit Modal End --}}
+@include('components.rupiah')
 
 {{-- Transaction Modal --}}
-<div class="modal fade" id="transaction" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog ">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Transaction</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form action="/transaction/create" method="post">
-        @csrf
-        <div class="modal-body">
-          
-          <div class="form-group">
-            <input name="saldo" type="number" class="form-control" id="saldo" placeholder="saldo" required>
-          </div>
-          <div class="form-group">
-            <input name="transaction_date" type="date" class="form-control" id="transaction_date" placeholder="Full Name" required>
-          </div>
-          <div class="form-group">
-            <select name="keterangan" class="form-control text-primary" id="kelas" required>
-              <option class="text-success" value="in">Masuk</option>
-              <option class="text-danger" value="out">Keluar</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select name="siswa" class="form-control text-dark" id="kelas" required>
-              @foreach ($siswa as $murid)
-              <option  value="{{$murid['NIS']}}">{{$murid['nama']}}</option>
-              @endforeach
-            </select>
-          </div>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <button type="submit" class="btn btn-primary">Save changes</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+  @include('components.createTransaction')
 {{-- Transaction End --}}
 
 {{-- CONTENT --}}
 
 <div class="container-xl">
 
-  @if (session()->has('success'))
+  {{-- @if (session()->has('success'))
   <div class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>{{session('success')}}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  @endif
+  @endif --}}
 
   {{-- BALANCE SECTION --}}
   <div class="container-fluid  mx-auto p-3" >
@@ -217,7 +156,7 @@
         <div class="card card-dark-blue shadow">
           <div class="card-body">
             <h3 class="card-title text-center text-white fs-3">Balance</h3>
-            <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoTotal}}</h5>
+            <h5 class="card-text text-center font-weight-normal">{{rupiah($saldoTotal)}}</h5>
             <button class="btn btn-success mx-auto my-3 d-block" data-toggle="modal" data-target="#transaction">Lakukan Transaksi</button>
           </div>
         </div>
@@ -227,7 +166,7 @@
         <div class="card bg-success shadow">
             <div class="card-body text-white">
               <h3 class="card-title text-center text-white fs-3">Saldo Masuk</h3>
-              <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoMasuk}}</h5>
+              <h5 class="card-text text-center font-weight-normal">{{rupiah($saldoMasuk)}}</h5>
             </div>
         </div>
     </div>
@@ -236,7 +175,7 @@
         <div class="card card-light-danger shadow">
             <div class="card-body">
               <h3 class="card-title text-center text-white fs-3">Saldo Keluar</h3>
-              <h5 class="card-text text-center font-weight-normal">Rp. {{$saldoKeluar}}</h5>
+              <h5 class="card-text text-center font-weight-normal">{{rupiah($saldoKeluar)}}</h5>
             </div>
         </div>
     </div>
@@ -252,12 +191,16 @@
               <div class="table-title">
                   <div class="row">
                       <div class="col-sm-8"><h2><strong>Transaction History</strong></h2></div>
-                      <div class="col-sm-4">
+
+                      {{-- SEARCH BAR --}}
+                      {{-- <div class="col-sm-4">
                           <div class="search-box">
                               <i class="material-icons">&#xE8B6;</i>
                               <input type="text" class="form-control" placeholder="Search&hellip;">
                           </div>
-                      </div>
+                      </div> --}}
+                      {{-- SEARCH BAR END --}}
+                      
                   </div>
               </div>
               <table class="table table-striped table-hover table-bordered">
@@ -269,16 +212,28 @@
                           <th>SALDO</th>
                           <th>ADMIN</th>
                           <th>KETERANGAN</th>
+                          <th>ACTION</th>
                           {{-- <th>Actions</th> --}}
                       </tr>
                   </thead>
                   <tbody>
                     @foreach ($historySaldo as $history)
+
+                    {{-- Edit Modal --}}
+                    @include('components.editTransaction')
+                    {{-- Edit Modal End --}}
+
                       <tr>
-                        <td>1</td>
-                        <td>{{$history['transaction_date']}}</td>
+                        <td>{{$loop->iteration}}</td>
+                        <?php $time = strtotime($history['transaction_date'])  ?>
+                        <td>{{date('d/M/Y',$time)}}</td>
                         <td>{{$history['siswa']}}</td>
-                        <td>{{$history['saldo']}}</td>
+                        @if ($history['keterangan'] === "in" )
+                          <td class="text-success">{{rupiah($history['saldo'])}}</td>
+                        @else
+                          <td class="text-danger">{{rupiah($history['saldo'])}}</td>
+                        @endif
+                        
                         <td>{{$history['admin']}}</td>
                         @if ($history['keterangan'] === "in" )
                           <td><span class="badge badge-success">masuk</span></td>
@@ -286,12 +241,14 @@
                           <td><span class="badge badge-danger">keluar</span></td>
                         @endif
                         
-                        {{-- <td>
-                            <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editModal">&#xE254;</i></a>
-                            <form action="/siswa/delete/id" method="post" class="d-inline">
-                              <a onclick="event.preventDefault()"  href="" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                        <td>
+                            <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editModal{{$loop->iteration}}">&#xE254;</i></a>
+                            <form id="deleteForm" action="/transaction/delete/{{$history['transaction_id']}}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <a onclick="document.getElementById('deleteForm').submit();" type="submit"  href="javascript:{}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </form>
-                        </td> --}}
+                        </td>
                       </tr>
                     @endforeach
                       
