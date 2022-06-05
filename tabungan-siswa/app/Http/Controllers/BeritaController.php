@@ -10,7 +10,7 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        $beritas = Berita::all();
+        $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
         return view('admin.adminberita', compact(
             'beritas'
         ));
@@ -19,7 +19,7 @@ class BeritaController extends Controller
     public function update(Request $request) {
         
         $validate = $request->validate([
-            'berita'=> "required",
+            'judul'=> "required",
         ]);
 
         Berita::where('berita_id', $request->berita_id)->update([
