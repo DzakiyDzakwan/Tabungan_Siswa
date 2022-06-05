@@ -149,7 +149,7 @@ $(document).ready(function(){
                     <div class="col-sm-4"><h2>Customer <b>Details</b></h2></div>
                     {{-- addEmployeeModal --}}
                     <div class="col-sm-4">
-                        <a href="{{url('admin/create')}}" class="btn btn-danger">Add Data</a>
+                        <a href="admin/create" class="btn btn-primary">Add Data</a>
                     </div>
                     {{-- end addEmployee --}}
                     <div class="col-sm-4">
@@ -167,19 +167,24 @@ $(document).ready(function(){
                         <th>NAMA<i class="fa fa-sort"></i></th>
                         <th>PEKERJAAN</th>
                         <th>STATUS<i class="fa fa-sort"></i></th>
+                        <th>USER</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($datas as $key=>$value)
+                    @foreach ($datas as $data)
                     <tr>
-                        <td>{{$value->admin_id}}</td>
-                        <td>{{$value->nama}}</td>
-                        <td>{{$value->pekerjaan}}</td>
-                        <td>{{$value->status}}</td>
+                        <th>{{$loop->iteration}}</th>
+                        <td>{{$data->nama}}</td>
+                        <td>{{$data->pekerjaan}}</td>
+                        <td>{{$data->status}}</td>
+                        <td>{{$data->user}}</td>
                         <td>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <form id="deleteForm" action="/admin/{{$data['admin_id']}}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <a onclick="document.getElementById('deleteForm').submit();" type="submit"  href="javascript:{}" class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -200,4 +205,15 @@ $(document).ready(function(){
         </div>
     </div>  
 </div>   
+@endsection
+
+@section('script')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  </script>
 @endsection

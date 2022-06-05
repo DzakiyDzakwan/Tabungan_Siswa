@@ -123,13 +123,13 @@ table.table td i {
     margin-top: 6px;
     font-size: 95%;
 }
-
 /* Modal styles */
-.add-button{
+a.btn{
     position: relative;
     left: 80px;
     float: right;
 }
+
 </style>
 <script>
 $(document).ready(function(){
@@ -148,45 +148,9 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-4"><h2>Customer <b>Details</b></h2></div>
                     {{-- addEmployeeModal --}}
-                    <div class="col-sm-4">
-                        <div class="add-button">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Data</span></a>
+                        <div class="col-sm-4">
+                            <a href="#" class="btn btn-primary">Add Data</a>
                         </div>       
-                    </div>
-                    <div id="addEmployeeModal" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Add Data</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="form-group">
-                                        <label>JUDUL</label>
-                                        <input type="text" class="form-control" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>IMAGE</label>
-                                        <input type="text" class="form-control" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <label>ISI</label>
-                                        <textarea class="form-control" required></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>AUTHOR</label>
-                                        <input type="text" class="form-control" required />
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel" />
-                                    <input type="submit" class="btn btn-success" value="Add" />
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                    </div>
                     {{-- end addEmployee --}}
                     <div class="col-sm-4">
                         <div class="search-box">
@@ -209,18 +173,25 @@ $(document).ready(function(){
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($beritas as $berita)
+                    @include('components.editBerita')
                     <tr>
-                        <td>1</td>
-                        <td>Thomas Hardy</td>
-                        <td>89 Chiaroscuro Rd.</td>
-                        <td>Portland</td>
-                        <td>97219</td>
-                        <td>USA</td>
+                        <th>{{$loop->iteration}}</th>
+                        <td>{{$berita->judul}}</td>
+                        <td>{{$berita->image}}</td>
+                        <td>{{$berita->isi}}</td>
+                        <td>{{$berita->author}}</td>
+                        <td>{{$berita->category}}</td>
                         <td>
-                            <a href="#" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editBerita{{$loop->iteration}}">&#xE254;</i></a>
+                            <form id="deleteForm" action="/berita/{{$berita['berita_id']}}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <a onclick="document.getElementById('deleteForm').submit();" type="submit"  href="javascript:{}" class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                            </form>
                         </td>
-                    </tr>      
+                    </tr>
+                    @endforeach  
                 </tbody>
             </table>
             <div class="clearfix">
@@ -238,4 +209,15 @@ $(document).ready(function(){
         </div>
     </div>  
 </div>   
+@endsection
+
+@section('script')
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+  </script>
 @endsection

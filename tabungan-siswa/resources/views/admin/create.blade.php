@@ -138,7 +138,7 @@ $(document).ready(function(){
 </script>
 @endsection
 @section('title')
-<title>Admin</title>
+<title>Create Admin</title>
 @endsection
 @section('content')
 <div class="container-xl">
@@ -150,26 +150,26 @@ $(document).ready(function(){
                     
                 </div>
             </div>
-            <div class="card-body">
-                <form action="{{url('admin')}}" method="POST">
-                    @csrf
-                    <div class="form-group">
-                        <input type="text" id="id" name="admin_id" class="form-control" placeholder="ID">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="nama" name="nama" class="form-control" placeholder="Nama">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="pekerjaan" name="pekerjaan" class="form-control" placeholder="Pekerjaan">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="status" name="status" class="form-control" placeholder="Status">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-info">Save</button>
-                    </div>
-                </form>
+            <div class="col-lg-8">
+                <div class="card-body">
+                    <form action="/admin" method="POST">
+                        @csrf
+                        <div class="form-group">
+                            <input name="user_name" type="text" class="form-control form-control-lg" id="user_name" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="email" type="email" class="form-control form-control-lg" id="email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input name="password" type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-info">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+            
         </div>
     </div>  
 </div>   

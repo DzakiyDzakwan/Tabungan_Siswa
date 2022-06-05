@@ -101,8 +101,8 @@ Route::middleware('auth')->group(function() {
             Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('transaction-Admin');
             Route::post('/transaction/create', [TransactionController::class, 'store']);
             Route::get('/settingAdmin', [SettingUserController::class, 'index']);
-            Route::get('/admin/berita', [BeritaController::class, 'index']);
             Route::resource('/admin', AdminController::class);
+            Route::resource('/berita', BeritaController::class);
             Route::get('/adminConfirmation', [ConfirmationController::class, 'index']);
 
             //Update
