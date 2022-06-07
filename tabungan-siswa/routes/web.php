@@ -41,8 +41,6 @@ Route::middleware('guest')->group(function(){
 
     Route::post('/regist', [RegisterController::class, 'regist']);
     Route::get('/siswa', [SiswaController::class, 'index']);
-    Route::get('/hapus/{NIS}', [SiswaController::class, 'hapus']);
-
 
 
 });
@@ -51,7 +49,7 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware('auth')->group(function() {
 
-    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('/logout', [LoginController::class, 'logout']);
 
     Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
 
@@ -112,6 +110,7 @@ Route::middleware('auth')->group(function() {
 
             //Delete
             Route::delete('/transaction/delete/{id}', [TransactionController::class, 'destroy']);
+            Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
 
         });
 

@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\User;
+use Illuminate\Pagination\CursorPaginator;
 
 class SiswaController extends Controller
 {   
     public function index() {
-        $datasiswa = Siswa::join('users', 'siswas.user', '=', 'users.id')->get();
+        // $datasiswa = Siswa::join('users', 'siswas.user', '=', 'users.id')->get()->paginate(1);
+        $datasiswa = Siswa::join('users', 'siswas.user', '=', 'users.id')->orderBy('user')->paginate(5);
         return view('admin.adminsiswa', [
             'datanya' => $datasiswa
         ]);
