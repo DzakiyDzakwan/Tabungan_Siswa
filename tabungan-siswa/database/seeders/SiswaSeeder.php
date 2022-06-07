@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Siswa;
+use Illuminate\Support\Str;
+
 
 class SiswaSeeder extends Seeder
 {
@@ -27,5 +29,14 @@ class SiswaSeeder extends Seeder
             'kelas'=>'5',
             'user' => 4
         ]);
+
+        for($i = 0; $i < 25; $i++) {
+            Siswa::create([
+                'NIS'=>'21140200'.$i+5,
+                'nama'=> Str::random(10),
+                'kelas'=>rand(1,6),
+                'user' => $i + 5
+            ]);
+        }
     }
 }

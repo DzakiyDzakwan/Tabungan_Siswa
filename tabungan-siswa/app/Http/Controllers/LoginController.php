@@ -32,7 +32,7 @@ class LoginController extends Controller
             if(Auth::user()->role === "siswa" ) {
                 return redirect()->intended('/home');
             } else {
-                return redirect()->intended('/kategori');
+                return redirect()->intended('/admin');
             }
 
             
