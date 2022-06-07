@@ -14,14 +14,20 @@
 
             <input type="hidden" name="berita_id" value="{{$berita['berita_id']}}">
             <div class="form-group">
+            <label class="px-2" for="judul">Judul</label>
             <input name="judul" type="text" class="form-control" id="judul" placeholder="Judul" value="{{$berita['judul']}}" required>
             </div>
-            {{-- <div class="form-group">
-            <input name="image" type="text" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}" required>
-            </div> --}}
             <div class="form-group">
+            <label class="px-2" for="image">Ubah Gambar</label>
+            <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}" required>
+            </div>
+            <div class="form-group">
+            <label class="px-2" for="isi">Isi</label>
             <input name="isi" type="text" class="form-control" id="isi" placeholder="Isi" value="{{$berita['isi']}}" required>
             </div>
+            {{-- <div class="form-group">
+            <input name="category" type="text" class="form-control" id="category" placeholder="Category" value="{{$berita['category']}}" required>
+            </div> --}}
         </div>
         <div class="modal-footer justify-content-center">
             <button type="submit" class="btn btn-primary">Save changes</button>

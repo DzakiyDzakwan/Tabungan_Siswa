@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Berita;
+use App\Models\Admin;
+use App\Models\Category;
 
 class BeritaController extends Controller
 {
@@ -14,8 +16,33 @@ class BeritaController extends Controller
         return view('admin.adminberita', compact(
             'beritas'
         ));
+
     }
+
+    // public function create()
+    // {
+    //     $categories = Categories::all();
+    //     return view('berita', compact('categories'));
+    // }
     
+    public function store(Request $request)
+    {
+        $id = auth()->user()->id;
+
+        $admin = User::select('admins.admin_id')->join('admins', 'admins.user', '=', 'users.id')->where('admins.user', $id)->get()[0]['admin_id'];
+
+        Berita::create([
+
+            'judul'=>$request->judul,
+            'image'=>$request->image,
+            'isi'=>$request->isi,
+            'admin'=>$admin
+
+        ]);
+
+        return back()->with('success', 'Transaksi Berhasil');
+    }
+
     public function update(Request $request) {
         
         $validate = $request->validate([

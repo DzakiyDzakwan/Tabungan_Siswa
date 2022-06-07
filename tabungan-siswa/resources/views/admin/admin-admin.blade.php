@@ -4,9 +4,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <style>
 body {
     color: #566787;
@@ -125,7 +122,7 @@ table.table td i {
 } 
 
 /* Modal styles */
-a.btn{
+button.btn-info          {
     position: relative;
     left: 80px;
     float: right;
@@ -141,6 +138,7 @@ $(document).ready(function(){
 <title>Admin</title>
 @endsection
 @section('content')
+@include('components.createAdmin')
 <div class="container-xl">
     <div class="table-responsive">
         <div class="table-wrapper">
@@ -149,7 +147,8 @@ $(document).ready(function(){
                     <div class="col-sm-4"><h2>Customer <b>Details</b></h2></div>
                     {{-- addEmployeeModal --}}
                     <div class="col-sm-4">
-                        <a href="admin/create" class="btn btn-primary">Add Data</a>
+                        <button class="btn btn-info" data-toggle="modal" data-target="#admin">ADD DATA</button>
+                        {{-- <a href="admin/create">Add Data</a> --}}
                     </div>
                     {{-- end addEmployee --}}
                     <div class="col-sm-4">

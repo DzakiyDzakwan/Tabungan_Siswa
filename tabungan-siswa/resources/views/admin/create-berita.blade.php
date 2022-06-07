@@ -133,12 +133,12 @@
 </style>
 <script>
 $(document).ready(function(){
-	$('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 @endsection
 @section('title')
-  <title>Berita</title>
+<title>Berita</title>
 @endsection
 @section('content')
 @include('components.createBerita')
@@ -159,42 +159,48 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
-            <table class="table table-striped table-hover table-bordered">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>JUDUL<i class="fa fa-sort"></i></th>
-                        <th>IMAGE</th>
-                        <th>ISI <i class="fa fa-sort"></i></th>
-                        <th>AUTHOR</th>
-                        <th>CATEGORY <i class="fa fa-sort"></i></th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($beritas as $index => $berita)
-                    @include('components.editBerita')
-                    <tr>
-                        <th>{{$index + $beritas->firstItem()}}</th>
-                        <td>{{$berita->judul}}</td>
-                        <td>
-                            <img src="{{asset('FileImage/'.$berita->image)}}" alt="" style="width: 40px">
-                        </td>
-                        <td>{{$berita->isi}}</td>
-                        <td>{{$berita->admin_name}}</td>
-                        <td>{{$berita->category_name}}</td>
-                        <td>
-                            <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editBerita{{$loop->iteration}}">&#xE254;</i></a>
-                            <form id="deleteForm" action="/berita/{{$berita['berita_id']}}" method="post" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <a onclick="document.getElementById('deleteForm').submit();" type="submit"  href="javascript:{}" class="delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach  
-                </tbody>
-            </table>
+            <div class="modal fade" id="berita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Berita</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <form class="pt-3" action="/berita/create" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="modal-body">
+                        {{-- <input type="hidden" name="berita_id" value="{{$category['berita_id']}}"> --}}
+                        <div class="form-group">
+                        <input name="judul" type="text" class="form-control text-primary"" id="judul" placeholder="Judul" required>
+                        </div>
+                        <div class="form-group">
+                        <input name="image" type="file" class="form-control text-primary"" id="image" placeholder="image" required>
+                        </div>
+                        <div class="form-group">
+                        <input name="isi" type="text" class="form-control text-primary"" id="isi" placeholder="Isi" required>
+                        </div>
+                        {{-- <div class="form-group">
+                        <input name="author" type="" class="form-control text-primary"" id="author" placeholder="Author" required>
+                        </div> --}}
+                        <div class="form-group">
+                        <select name="berita_id" type="" class="form-control text-primary"" id="berita_id" placeholder="Category" required>
+                            <option value="">--Pilih--</option>
+                            @foreach ($categories as $category)     
+                            <option value="{{$category->berita_id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+            
+                        <div class="col-md-start">
+                        <button type="submit" class="btn btn-primary"  type="submit">ADD DATA</button>
+                        </div>
+                    </div>        
+                </form>
+                </div>
+                </div>
+            </div>
             <div class="clearfix">
                 <div class="hint-text">Showing <b>{{$beritas->firstItem()}}</b> out of <b>{{$beritas->lastItem()}}</b> entries</div>
                 {{$beritas->links()}}
@@ -218,8 +224,8 @@ $(document).ready(function(){
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script>
-  $(document).ready(function(){
+$(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
-  });
-  </script>
+});
+</script>
 @endsection
