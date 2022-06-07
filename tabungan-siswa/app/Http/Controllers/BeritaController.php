@@ -8,45 +8,64 @@ use App\Models\Berita;
 use App\Models\Admin;
 use App\Models\Category;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class BeritaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
+        // Tombol Search
+        
+        // $cari = $request->cari;
+        // $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
+        // $beritas = Berita::where('judul', 'LIKE', '%'.$cari.'%')
+        //     ->orwhere('category', 'LIKE', '%'.$cari. '%')
+        //     ->paginate(5);
+        // end Tombol search
 
+        $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
         $categories = Category::all();
+        $admin = Admin::all();
 
        /*  dd($categories); */
-
         return view('admin.adminberita',([
             'categories'=>$categories,
-            'beritas'=>$beritas
+            'beritas'=>$beritas,
+            'admin'=>$admin
         ]));
 
     }
-
-    // public function create()
-    // {
-    //     $categories = Categories::all();
-    //     return view('berita', compact('categories'));
-    // }
     
     public function store(Request $request)
     {
         $id = auth()->user()->id;
-
         $admin = User::select('admins.admin_id')->join('admins', 'admins.user', '=', 'users.id')->where('admins.user', $id)->get()[0]['admin_id'];
 
         /* dd($request->all()); */
+        // $beritas = Berita::create($request->all());
+        // if($request->hasFile('image')){
+        //     $request->file('image')->move('ImageBerita/' , $request->file('image')->getClientOriginalName());
+        //     $beritas->image = $request->file('image')->getClientOriginalName();
+        //     $beritas->save();
+        // }
+
+        $validatedData = $request->validate([
+            'image' => 'mimes:png,jpg,jpeg|max:10240',
+        ]);
+
+        if($request->hasFile('image')){
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('ImageBerita',   $fileName, 'public');
+            $validatedData['image'] = '/storage/' . $path;
+        }
 
         Berita::create([
 
             'judul'=>$request->judul,
-            'image'=>$request->image,
+            'image'=>$validatedData['image'],
             'isi'=>$request->isi,
             'category'=>$request->category,
-            'author'=>$admin
+            'author'=>$request->author
 
         ]);
 
@@ -55,14 +74,30 @@ class BeritaController extends Controller
 
     public function update(Request $request) {
         
+        $validatedData = $request->validate([
+            'image' => 'mimes:png,jpg,jpeg|max:10240',
+        ]);
+
+        if($request->hasFile('image')){
+            $fileName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('ImageBerita',   $fileName, 'public');
+            $validatedData['image'] = '/storage/' . $path;
+        }
+
         $validate = $request->validate([
             'judul'=> "required",
+            'image'=> "required",
+            'isi'=> "required",
+            'category'=> "required",
         ]);
 
         Berita::where('berita_id', $request->berita_id)->update([
 
             'judul'=>$request->judul,
+            'image'=>$request->image,
             'isi'=>$request->isi,
+            'category'=>$request->category
+            
         ]);
 
         return back()->with('success', 'Data Berhasil diubah');

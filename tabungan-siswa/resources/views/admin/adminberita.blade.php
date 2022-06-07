@@ -149,14 +149,30 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-4"><h2>Customer <b>Details</b></h2></div>
                     <div class="col-sm-4">
+                        {{-- <a href="berita/create-berita" class="btn btn-info" data-toggle="modal">ADD DATA</a> --}}
                         <button class="btn btn-info" data-toggle="modal" data-target="#berita">ADD DATA</button>
-                    </div>     
-                    <div class="col-sm-4">
-                        <div class="search-box">
-                            <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
-                        </div>
                     </div>
+                    
+                    
+                        <div class="col-sm-4">
+                            <div class="search-box">
+                                <form action="berita" method="GET">
+                                    <i class="material-icons">&#xE8B6;</i>
+                                    <input value="{{ old('cari') }}" name="cari" type="text"class="form-control" placeholder="Search&hellip;">
+                                {{-- <input type="text" class="form-control" placeholder="Search&hellip;"> --}}
+                                </form> 
+                            </div>
+                        </div>
+                        {{-- <div class="input-group my-4" style="width:800px">
+                            <input value="{{ old('cari') }}" name="cari" type="text"class="form-control" placeholder="Search Blog...">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">
+                                    Search
+                                </button>
+                            </div>
+                        </div> --}}
+                        
+                    
                 </div>
             </div>
             <table class="table table-striped table-hover table-bordered">
@@ -164,8 +180,8 @@ $(document).ready(function(){
                     <tr>
                         <th>ID</th>
                         <th>JUDUL<i class="fa fa-sort"></i></th>
-                       {{--  <th>IMAGE</th>
-                        <th>ISI <i class="fa fa-sort"></i></th> --}}
+                        <th>IMAGE</th>
+                        {{-- <th>ISI <i class="fa fa-sort"></i></th> --}}
                         <th>AUTHOR</th>
                         <th>CATEGORY {{-- <i class="fa fa-sort"></i> --}}</th>
                         <th>Actions</th>
@@ -177,9 +193,9 @@ $(document).ready(function(){
                     <tr>
                         <th>{{$index + $beritas->firstItem()}}</th>
                         <td>{{$berita->judul}}</td>
-                        {{-- <td>
-                            <img src="{{asset('FileImage/'.$berita->image)}}" alt="" style="width: 40px">
-                        </td> --}}
+                        <td>
+                            <a href="{{asset ($berita->image)}}" target="_blank" class="text-primary" >Lihat</a></td>
+                        </td>
                         {{-- <td>{{$berita->isi}}</td> --}}
                         <td>{{$berita->admin_name}}</td>
                         <td>{{$berita->category_name}}</td>
@@ -217,6 +233,7 @@ $(document).ready(function(){
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 <script>
   $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();

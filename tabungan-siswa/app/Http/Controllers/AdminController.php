@@ -10,11 +10,16 @@ use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $datas = admin::paginate(5);
+        $cari = $request->cari;
+        $datas = admin::where('nama', 'LIKE', '%'.$cari.'%')
+            ->orwhere('pekerjaan', 'LIKE', '%'.$cari. '%')
+            ->paginate(5);
+
         return view('admin.admin-admin', compact(
-            'datas'
+            'datas',
+            'cari'
         ));
     }
 

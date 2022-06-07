@@ -153,8 +153,11 @@ $(document).ready(function(){
                     {{-- end addEmployee --}}
                     <div class="col-sm-4">
                         <div class="search-box">
-                            <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
+                            <form action="admin" method="GET">
+                                <i class="material-icons">&#xE8B6;</i>
+                                <input value="{{$cari}}" name="cari" type="text"class="form-control" placeholder="Search&hellip;">
+                            {{-- <input type="text" class="form-control" placeholder="Search&hellip;"> --}}
+                            </form> 
                         </div>
                     </div>
                 </div>
