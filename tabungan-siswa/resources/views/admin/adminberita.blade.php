@@ -164,10 +164,10 @@ $(document).ready(function(){
                     <tr>
                         <th>ID</th>
                         <th>JUDUL<i class="fa fa-sort"></i></th>
-                        <th>IMAGE</th>
-                        <th>ISI <i class="fa fa-sort"></i></th>
+                       {{--  <th>IMAGE</th>
+                        <th>ISI <i class="fa fa-sort"></i></th> --}}
                         <th>AUTHOR</th>
-                        <th>CATEGORY <i class="fa fa-sort"></i></th>
+                        <th>CATEGORY {{-- <i class="fa fa-sort"></i> --}}</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -177,10 +177,10 @@ $(document).ready(function(){
                     <tr>
                         <th>{{$index + $beritas->firstItem()}}</th>
                         <td>{{$berita->judul}}</td>
-                        <td>
+                        {{-- <td>
                             <img src="{{asset('FileImage/'.$berita->image)}}" alt="" style="width: 40px">
-                        </td>
-                        <td>{{$berita->isi}}</td>
+                        </td> --}}
+                        {{-- <td>{{$berita->isi}}</td> --}}
                         <td>{{$berita->admin_name}}</td>
                         <td>{{$berita->category_name}}</td>
                         <td>

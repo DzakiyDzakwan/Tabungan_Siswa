@@ -12,7 +12,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $datas = admin::all();
+        $datas = admin::paginate(5);
         return view('admin.admin-admin', compact(
             'datas'
         ));

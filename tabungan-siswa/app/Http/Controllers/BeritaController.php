@@ -7,15 +7,22 @@ use Illuminate\Http\Request;
 use App\Models\Berita;
 use App\Models\Admin;
 use App\Models\Category;
+use App\Models\User;
 
 class BeritaController extends Controller
 {
     public function index()
     {
         $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
-        return view('admin.adminberita', compact(
-            'beritas'
-        ));
+
+        $categories = Category::all();
+
+       /*  dd($categories); */
+
+        return view('admin.adminberita',([
+            'categories'=>$categories,
+            'beritas'=>$beritas
+        ]));
 
     }
 
@@ -31,16 +38,19 @@ class BeritaController extends Controller
 
         $admin = User::select('admins.admin_id')->join('admins', 'admins.user', '=', 'users.id')->where('admins.user', $id)->get()[0]['admin_id'];
 
+        /* dd($request->all()); */
+
         Berita::create([
 
             'judul'=>$request->judul,
             'image'=>$request->image,
             'isi'=>$request->isi,
-            'admin'=>$admin
+            'category'=>$request->category,
+            'author'=>$admin
 
         ]);
 
-        return back()->with('success', 'Transaksi Berhasil');
+        return back()->with('success', 'Berita Berhasil dibuat');
     }
 
     public function update(Request $request) {

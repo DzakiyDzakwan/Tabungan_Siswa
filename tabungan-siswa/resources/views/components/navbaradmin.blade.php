@@ -11,8 +11,13 @@
     <ul class="navbar-nav navbar-nav-right">
       {{-- Setting --}}
       <li class="nav-item nav-profile dropdown">
-        <h5 class="my-0 mx-2"><strong> {{auth()->user()->nama}} </strong></h5>
-        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+        <?php 
+        use App\Models\Admin;
+        $id = Auth::user()->id;
+        $name = Admin::where('user', $id)->get()[0]['nama'];
+        ?>
+        <h5 class="my-0 mx-2"><strong> {{$name}} </strong></h5>
+        <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" id="profileDropdown">
           <img src="images/profile.png" alt="profile"/>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
