@@ -49,7 +49,7 @@ Route::middleware('guest')->group(function(){
 
 Route::middleware('auth')->group(function() {
 
-    Route::get('/logout', [LoginController::class, 'logout']);
+    Route::post('/logout', [LoginController::class, 'logout']);
 
     Route::get('/daftar', [ProfilController::class, 'index'])->name('daftar');
 
