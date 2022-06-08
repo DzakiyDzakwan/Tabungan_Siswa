@@ -25,7 +25,8 @@ class ConfirmationController extends Controller
             
         } else {
 
-            $history = Confirmation::join('siswas', 'confirmations.siswa', '=', 'siswas.NIS')->join('users', 'siswas.user', '=', 'users.id')->crossJoin('admins', 'confirmations.admin', 'admins.admin_id')->select('confirmations.confirmation_id', 'confirmations.transfer_date', 'confirmations.transfer_date', 'confirmations.saldo' ,'confirmations.jenis_transaksi', 'confirmations.bukti', 'confirmations.status', 'admins.nama')->where('users.id', $id)->paginate(5);
+            $history = Confirmation::join('siswas', 'confirmations.siswa', '=', 'siswas.NIS')->join('users', 'siswas.user', '=', 'users.id')/* ->join('admins', 'confirmations.admin', 'admins.admin_id') */->select('confirmations.confirmation_id', 'confirmations.admin' ,'confirmations.transfer_date', 'confirmations.transfer_date', 'confirmations.saldo' ,'confirmations.jenis_transaksi', 'confirmations.bukti', 'confirmations.status'/* , 'admins.nama' */)->where('users.id', $id)->paginate(5);
+
             $total = Confirmation::join('siswas', 'confirmations.siswa', '=', 'siswas.NIS')->join('users', 'siswas.user', '=', 'users.id')->where('users.id', $id)->count();
             $accepted = Confirmation::where('status', 'accepted')->count();
             $rejected = Confirmation::where('status', 'rejected')->count();
