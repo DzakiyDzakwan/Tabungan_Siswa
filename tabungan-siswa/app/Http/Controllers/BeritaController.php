@@ -16,11 +16,10 @@ class BeritaController extends Controller
     {
         // Tombol Search
         
-        // $cari = $request->cari;
-        // $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
-        // $beritas = Berita::where('judul', 'LIKE', '%'.$cari.'%')
-        //     ->orwhere('category', 'LIKE', '%'.$cari. '%')
-        //     ->paginate(5);
+        $cari = $request->cari;
+        $beritas =Berita::where('judul', 'LIKE', '%'.$cari.'%') 
+            ->orwhere('category', 'LIKE', '%'.$cari. '%')
+            ->paginate(5);
         // end Tombol search
 
         $beritas = Berita::join('admins', 'admins.admin_id', '=', 'beritas.author')->join('categories', 'beritas.category', '=', 'categories.category_id')->select('beritas.berita_id', 'beritas.judul', 'beritas.image', 'beritas.isi', 'categories.name AS category_name', 'admins.nama AS admin_name' )->paginate(5);
@@ -31,7 +30,8 @@ class BeritaController extends Controller
         return view('admin.adminberita',([
             'categories'=>$categories,
             'beritas'=>$beritas,
-            'admin'=>$admin
+            'admin'=>$admin,
+            'cari'=>$cari
         ]));
 
     }
@@ -65,7 +65,7 @@ class BeritaController extends Controller
             'image'=>$validatedData['image'],
             'isi'=>$request->isi,
             'category'=>$request->category,
-            'author'=>$request->author
+            'author'=>$admin
 
         ]);
 
@@ -86,9 +86,6 @@ class BeritaController extends Controller
 
         $validate = $request->validate([
             'judul'=> "required",
-            'image'=> "required",
-            'isi'=> "required",
-            'category'=> "required",
         ]);
 
         Berita::where('berita_id', $request->berita_id)->update([
