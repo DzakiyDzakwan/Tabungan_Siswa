@@ -132,6 +132,7 @@
     
     @include('components.rupiah')
     @include('components.createConfirmation')
+    <?php use App\Models\Admin;?>
 
     {{-- CONTENT --}}
         <div class="main-panel">
@@ -229,7 +230,10 @@
                                     @if ($item['status'] === 'pending')
                                         <td>Waiting for confirmation</td>
                                     @else 
-                                        <td>{{$item['nama']}}</td>
+                                    <?php
+                                        $nama = Admin::where('admin_id', $item['admin'])->get()[0]['nama'];
+                                    ?>
+                                        <td>{{$nama}}</td>
                                     @endif
                                     
                                     <td>
