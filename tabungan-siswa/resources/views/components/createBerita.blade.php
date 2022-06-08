@@ -15,7 +15,7 @@
         <form class="pt-3" action="/berita" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="modal-body">
-              {{-- <input type="hidden" name="berita_id" value="{{$category['berita_id']}}"> --}}
+              
               <div class="form-group">
               <label class="px-2" for="judul">Judul</label>
               <input name="judul" type="text" class="form-control text-primary"" id="judul" placeholder="Judul" required>
@@ -23,7 +23,7 @@
   
               <div class="form-group">
               <label class="px-2" for="imgae">Masukkan Gambar</label>
-              <input name="image" type="file" class="form-control text-primary" id="image" required>
+              <input name="image" type="file" class="form-control text-primary" id="image">
               </div>
   
               <div class="form-group">

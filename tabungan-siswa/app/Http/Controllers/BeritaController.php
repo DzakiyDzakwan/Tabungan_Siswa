@@ -42,13 +42,6 @@ class BeritaController extends Controller
         $admin = User::select('admins.admin_id')->join('admins', 'admins.user', '=', 'users.id')->where('admins.user', $id)->get()[0]['admin_id'];
 
         /* dd($request->all()); */
-        // $beritas = Berita::create($request->all());
-        // if($request->hasFile('image')){
-        //     $request->file('image')->move('ImageBerita/' , $request->file('image')->getClientOriginalName());
-        //     $beritas->image = $request->file('image')->getClientOriginalName();
-        //     $beritas->save();
-        // }
-
         $validatedData = $request->validate([
             'image' => 'mimes:png,jpg,jpeg|max:10240',
         ]);
@@ -65,7 +58,7 @@ class BeritaController extends Controller
             'image'=>$validatedData['image'],
             'isi'=>$request->isi,
             'category'=>$request->category,
-            'author'=>$admin
+            'author'=>$request->author,
 
         ]);
 

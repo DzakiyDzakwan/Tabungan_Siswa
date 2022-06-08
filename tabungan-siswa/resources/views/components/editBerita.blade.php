@@ -25,13 +25,13 @@
 
                 <div class="form-group">
                 <label class="px-2" for="image">Ubah Gambar</label>
-                <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}">
+                <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}" >
                 </div>
 
                 <div class="form-group">
                     <label class="px-2" for="isi">Isi</label>
                     <form>
-                        <textarea name="isi" id="isi" value="{{$berita['judul']}}" ></textarea>
+                        <textarea name="isi" id="isi" >{{$berita['isi']}}"</textarea>
                     </form>
                 </div>
                 {{-- <div class="form-group">
