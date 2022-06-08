@@ -107,10 +107,13 @@ Route::middleware('auth')->group(function() {
             Route::patch('/transaction/edit', [TransactionController::class, 'update']);
             Route::patch('/confirmation/accept/{id}', [ConfirmationController::class, 'accept']);
             Route::patch('/confirmation/reject/{id}', [ConfirmationController::class, 'reject']);
+            Route::patch('/editcategory', [CategoryController::class, 'edit']);
+
 
             //Delete
             Route::delete('/transaction/delete/{id}', [TransactionController::class, 'destroy']);
             Route::get('/hapus/{NIS}/{id}', [SiswaController::class, 'hapus']);
+            Route::get('/hapuskategori/{Id}', [CategoryController::class, 'hapus']);
 
         });
 
