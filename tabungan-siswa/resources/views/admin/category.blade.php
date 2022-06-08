@@ -133,7 +133,7 @@ $(document).ready(function(){
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
+                    <div class="col-sm-8"><h2 style="display: inline-block;"><b>Category</b></h2> <a style="display: inline-block;color:rgb(201, 201, 45);" onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editCategory">&#xe145;</i></a></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
@@ -159,7 +159,7 @@ $(document).ready(function(){
                             <td style="text-align:center;">
                             @include('components.createCategory')
                             @include('components.editCategory')
-                                <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editCategory{{$loop->iteration}}">&#xe145;</i></a>                                   
+                                {{-- <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editCategory{{$loop->iteration}}">&#xe145;</i></a> --}}                                                                      
                                 <a onclick="event.preventDefault()"  href="" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons" data-toggle="modal" data-target="#editBerita{{$loop->iteration}}">&#xE254;</i></a>
                                 <a href="/hapuskategori/{{ $data->category_id }}" class="delete" onclick="return confirm('Anda Yakin?')" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>
@@ -168,8 +168,6 @@ $(document).ready(function(){
                 </tbody>
             </table>
             <div class="clearfix">
-                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                {{ $datanya->links() }}
             </div>
         </div>
         </div>

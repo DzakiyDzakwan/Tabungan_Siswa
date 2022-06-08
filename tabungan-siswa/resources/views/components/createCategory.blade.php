@@ -3,7 +3,7 @@
 <head>
 </head>
 <body>
-    <div class="modal fade" id="editCategory{{$loop->iteration}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editCategory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
