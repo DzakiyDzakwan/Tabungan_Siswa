@@ -70,7 +70,8 @@ class BeritaController extends Controller
         $validatedData = $request->validate([
             'image' => 'mimes:png,jpg,jpeg|max:10240',
         ]);
-
+        
+        // dd($request->all()); 
         if($request->hasFile('image')){
             $fileName = $request->file('image')->getClientOriginalName();
             $path = $request->file('image')->storeAs('ImageBerita',   $fileName, 'public');

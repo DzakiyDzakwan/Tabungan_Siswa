@@ -12,12 +12,12 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="berita/{{$berita['berita_id']}}" method="post">
+            <form action="berita/{{$berita['berita_id']}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <div class="modal-body">
     
-                <input type="hidden" name="berita_id" value="{{$berita['berita_id']}}">
+                {{-- <input type="hidden" name="berita_id" value="{{$berita['berita_id']}}"> --}}
                 <div class="form-group">
                 <label class="px-2" for="judul">Judul</label>
                 <input name="judul" type="text" class="form-control" id="judul" placeholder="Judul" value="{{$berita['judul']}}" required>
@@ -29,10 +29,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="px-2" for="isi">Isi</label>
-                    <form>
-                        <textarea name="isi" id="isi" >{{$berita['isi']}}"</textarea>
-                    </form>
+                    <label class="px-2" for="isi">Isi</label>       
+                    <textarea name="isi" id="isi" >{{$berita['isi']}}"</textarea>
                 </div>
                 {{-- <div class="form-group">
                 <label class="px-2" for="isi">Isi</label>
