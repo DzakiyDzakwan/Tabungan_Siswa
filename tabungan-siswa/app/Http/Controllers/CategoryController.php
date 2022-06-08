@@ -22,6 +22,22 @@ class CategoryController extends Controller
         return back()->with('success','Category sukses dihapus!');
     }
 
+    public function create(Request $request) {
+        $validate = $request->validate([
+
+            'namakategori'=> "required",
+            'idkategori' => "required"
+
+        ]);
+
+        Category::create([
+            'category_id'=>$request->idkategori,
+            'name'=>$request->namakategori
+        ]);
+
+        return back()->with('success','Category sukses dibuat!');
+    }
+
     public function edit(Request $request) {
         $validate = $request->validate([
             'namakategori'=> "required",

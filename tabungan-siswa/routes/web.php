@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function() {
             //Admin
             //Create
             Route::post('/transaction/create', [TransactionController::class, 'store']);
+            Route::post('/createcategory', [CategoryController::class, 'create']);
 
             //Read
             Route::get('/admintransaction', [TransactionController::class, 'admin'])->name('admintransaction');
@@ -102,6 +103,7 @@ Route::middleware('auth')->group(function() {
             Route::resource('/admin', AdminController::class);
             Route::resource('/berita', BeritaController::class);
             Route::get('/adminConfirmation', [ConfirmationController::class, 'index']);
+            
 
             //Update
             Route::patch('/transaction/edit', [TransactionController::class, 'update']);

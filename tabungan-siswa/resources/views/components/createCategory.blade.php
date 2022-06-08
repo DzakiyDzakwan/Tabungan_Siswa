@@ -3,25 +3,27 @@
 <head>
 </head>
 <body>
-    <div class="modal fade" id="editBerita{{$loop->iteration}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editCategory{{$loop->iteration}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-            <form action="/editcategory" method="post">
+            <form action="/createcategory" method="post">
             @csrf
-            @method('PATCH')
             <div class="modal-body">
     
-                <input type="hidden" name="category_id" value="{{$data['category_id']}}">
+                <div class="form-group">
+                    <label class="px-2" for="image">Id Category</label>
+                    <input name="idkategori" type="text" class="form-control" id="image" placeholder="C00x" value="" required>
+                </div>
 
                 <div class="form-group">
-                <label class="px-2" for="image">Nama Category</label>
-                <input name="namakategori" type="text" class="form-control" id="image" placeholder="Image" value="{{$data['name']}}" required>
+                    <label class="px-2" for="image">Nama Category</label>
+                    <input name="namakategori" type="text" class="form-control" id="image" placeholder="cth: Sport" value="" required>
                 </div>
             </div>
             <div class="modal-footer justify-content-center">
