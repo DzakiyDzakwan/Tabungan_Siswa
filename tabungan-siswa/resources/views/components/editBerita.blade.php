@@ -17,7 +17,7 @@
             @method('PATCH')
             <div class="modal-body">
     
-                {{-- <input type="hidden" name="berita_id" value="{{$berita['berita_id']}}"> --}}
+                <input type="hidden" name="berita_id" value="{{$berita['berita_id']}}">
                 <div class="form-group">
                 <label class="px-2" for="judul">Judul</label>
                 <input name="judul" type="text" class="form-control" id="judul" placeholder="Judul" value="{{$berita['judul']}}" required>
