@@ -63,9 +63,9 @@
                 <div class="mt-3">
                   <button type="submit" class="btn btn-lg btn-block btn-primary" type="submit">SIGN IN</button>
                 </div>
-                <div class="my-2 d-flex justify-content-between align-items-center">
+               {{--  <div class="my-2 d-flex justify-content-between align-items-center">
                   <a href="#" class="auth-link text-black">Forgot password?</a>
-                </div>
+                </div> --}}
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account ? <a href="/register" class="text-primary">Create</a>
                 </div>

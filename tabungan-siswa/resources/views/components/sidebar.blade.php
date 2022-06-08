@@ -8,13 +8,13 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="confirmation">
+      <a class="nav-link" href="/confirmation">
         <i class="mdi mdi-ticket menu-icon"></i>
         <span class="menu-title">Confirmation</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="transaction">
+      <a class="nav-link" href="/transaction">
         <i class="mdi mdi-playlist-check menu-icon"></i>
         <span class="menu-title">Transaction</span>
       </a>

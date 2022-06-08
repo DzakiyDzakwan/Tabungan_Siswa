@@ -33,14 +33,14 @@
                 </form>
               </div>
   
-              <div class="form-group">
+              {{-- <div class="form-group">
                 <label class="px-2" for="siswa">Author</label>
                 <select name="author" class="form-control text-primary" id="author" required>
                   @foreach ($admin as $author)
                   <option  value="{{$author->admin_id}}">{{$author->nama}}</option>
                   @endforeach
                 </select>
-              </div>
+              </div> --}}
   
               <div class="form-group">
                 <label class="px-2" for="siswa">Category</label>

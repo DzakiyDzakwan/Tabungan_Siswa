@@ -66,12 +66,12 @@
                 <div class="form-group">
                   <input name="user_name" type="text" class="form-control form-control-lg" id="user_name" placeholder="Username" required>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <select name="role" class="form-control form-control-lg" id="kelas" required>
                     <option value="siswa">Siswa</option>
                     <option value="admin">Admin</option>
                   </select>
-                </div>
+                </div> --}}
                 <div class="form-group">
                   <input name="password" type="password" class="form-control form-control-lg" id="password" placeholder="Password" required>
                 </div>

@@ -25,7 +25,7 @@
 
                 <div class="form-group">
                 <label class="px-2" for="image">Ubah Gambar</label>
-                <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}" >
+                <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}">
                 </div>
 
                 <div class="form-group">

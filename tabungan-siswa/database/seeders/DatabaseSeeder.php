@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             SiswaSeeder::class,
             CategoriesSeeder::class,
-            BeritaSeeder::class
+            /* BeritaSeeder::class */
         ]);
     }
 }

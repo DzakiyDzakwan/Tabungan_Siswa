@@ -34,7 +34,8 @@
                                         <div class="blog-post">
                                             <a href="#!"><img class="card-img-top mb-3" src="{{ $post->image }}" alt="Gambar Disini" /></a>
                                             <h2 class="blog-post-title mt-2">{{ $post->judul }}</h2>
-                                            <p class="blog-post-meta mt-2">{{ $post->updated_at }}</p>
+                                            <?php $time = strtotime($post->updated_at)  ?>
+                                            <p class="blog-post-meta mt-2">{{ date('d M Y',$time) }}</p>
                                             <p class="blog-post-meta mt-2">{{ $post->name }}</p>
                                             <hr>
                                             <p>{!! $post->isi !!}</p>

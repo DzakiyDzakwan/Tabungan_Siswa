@@ -58,7 +58,7 @@ class BeritaController extends Controller
             'image'=>$validatedData['image'],
             'isi'=>$request->isi,
             'category'=>$request->category,
-            'author'=>$request->author,
+            'author'=>$admin,
 
         ]);
 
@@ -66,10 +66,14 @@ class BeritaController extends Controller
     }
 
     public function update(Request $request) {
+
+        /* dd($request->all()); */
         
         $validatedData = $request->validate([
             'image' => 'mimes:png,jpg,jpeg|max:10240',
         ]);
+
+       
         
         // dd($request->all()); 
         if($request->hasFile('image')){
@@ -85,7 +89,7 @@ class BeritaController extends Controller
         Berita::where('berita_id', $request->berita_id)->update([
 
             'judul'=>$request->judul,
-            'image'=>$request->image,
+            'image'=>$validatedData['image'],
             'isi'=>$request->isi,
             'category'=>$request->category
             
