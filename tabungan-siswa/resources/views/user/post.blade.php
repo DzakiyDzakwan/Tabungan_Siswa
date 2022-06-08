@@ -34,9 +34,9 @@
                                         <div class="blog-post">
                                             <a href="#!"><img class="card-img-top mb-3" src="{{ $post->image }}" alt="Gambar Disini" /></a>
                                             <h2 class="blog-post-title mt-2">{{ $post->judul }}</h2>
-                                            <p class="blog-post-meta mt-2">{{ $post->created_at }}</p>
-                                    
-                                            <p>{{ $post->isi }}</p>
+                                            <p class="blog-post-meta mt-2">{{ $post->updated_at }}</p>
+                                            <hr>
+                                            <p>{!! $post->isi !!}</p>
                                             
                                         </div>
 

@@ -33,7 +33,7 @@
                                     </a>
                                     <form action="/home" method="GET">
                                         <div class="input-group my-4" style="width:800px">
-                                            <input value="{{ old('cari') }}" name="cari" type="text"class="form-control" placeholder="Search Blog...">
+                                            <input value="{{ request('cari') }}" name="cari" type="text" class="form-control" placeholder="Search Blog...">
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary" type="submit">
                                                     Search
@@ -48,7 +48,6 @@
                                     
                                     <div class="col-lg-12">
                                         <div class="row">
-
                                             @foreach ($beritas as $post)
 
                                                 <div class="col-lg-6">
