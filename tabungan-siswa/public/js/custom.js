@@ -1,3 +1,19 @@
+let inputan1 = document.getElementById('inputanku');
+let tabelnya = document.getElementById('tabelku');
+  inputan1.addEventListener('keyup', function() {
+      var xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      tabelnya.innerHTML = this.responseText;
+      }
+    };
+    xhr.open('GET', 'ajax/ajaxCategory.blade.php?kunci=' + inputan1.value, true);
+    xhr.send();
+})
+
+
+
 function editkana() {
     var tombol = document.getElementById("editkan");
     var bodyTabel = document.getElementById("body-tabel")
@@ -19,3 +35,4 @@ function editkana() {
         }
     }
 }
+

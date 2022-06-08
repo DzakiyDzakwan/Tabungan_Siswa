@@ -136,14 +136,14 @@ $(document).ready(function(){
 @section('content')
 <div class="container-xl">
     <div class="table-responsive">
-        <div class="table-wrapper">
+        <div id="bungkustabel" class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-8"><h2>Customer <b>Details</b></h2></div>
                     <div class="col-sm-4">
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
+                            <input id="inputanku2" type="text" class="form-control" placeholder="Search&hellip;">
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ $(document).ready(function(){
                         <th>NAMA</th>
                         <th>KELAS <i class="fa fa-sort"></i></th>
                         <th>SALDO</th>
-                        <th>Actions</th>
+                        <th style="text-align:center;">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="body-tabel">
@@ -167,9 +167,7 @@ $(document).ready(function(){
                         <td id="{{ $data->nama }}">{{ $data->nama }}</td>
                         <td id="{{ $data->kelas }}">{{ $data->kelas }}</td>
                         <td id="{{ $data->saldo }}">{{ $data->saldo }}</td>
-                        <td>
-                            <a href="#" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                            <a href="/siswa/{{ $data->id }}" class="edit" id="tombol" onclick="editkan()" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                        <td style="text-align:center;">
                             <a href="/hapus/{{ $data->NIS }}/{{ $data->id }}" onclick="return confirm('Anda yakin ingin menghapus siswa?')" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                         </td>
                     </tr>     

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Siswa;
 use App\Models\User;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Pagination\CursorPaginator;
 
 class SiswaController extends Controller
@@ -29,7 +30,7 @@ class SiswaController extends Controller
     public function hapus($NIS, $id) {
         Siswa::where('NIS', $NIS)->delete();
         USER::where('id', $id)->delete();
-        return redirect('/siswa');
+        return back()->with('success', 'Siswa berhasil dihapus!');
     }
 
     public function edit($id) {
