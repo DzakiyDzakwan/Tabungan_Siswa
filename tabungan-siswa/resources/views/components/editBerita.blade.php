@@ -25,13 +25,19 @@
 
                 <div class="form-group">
                 <label class="px-2" for="image">Ubah Gambar</label>
-                <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}" required>
+                <input name="image" type="file" class="form-control" id="image" placeholder="Image" value="{{$berita['image']}}">
                 </div>
 
                 <div class="form-group">
+                    <label class="px-2" for="isi">Isi</label>
+                    <form>
+                        <textarea name="isi" id="isi" value="{{$berita['judul']}}" ></textarea>
+                    </form>
+                </div>
+                {{-- <div class="form-group">
                 <label class="px-2" for="isi">Isi</label>
                 <input name="isi" type="text" class="form-control" id="isi" placeholder="Isi" value="{{$berita['isi']}}" required>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label class="px-2" for="siswa">Category</label>

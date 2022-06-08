@@ -158,7 +158,7 @@ $(document).ready(function(){
                             <div class="search-box">
                                 <form action="berita" method="GET">
                                     <i class="material-icons">&#xE8B6;</i>
-                                    <input value="{{ old('cari') }}" name="cari" type="text"class="form-control" placeholder="Search&hellip;">
+                                    <input value="{{$cari}}" name="cari" type="text" class="form-control" placeholder="Search&hellip;">
                                 {{-- <input type="text" class="form-control" placeholder="Search&hellip;"> --}}
                                 </form> 
                             </div>
